@@ -70,6 +70,11 @@
     <Content Include="CSS\StyleIndex.css" />
     <Content Include="default.aspx" />
     <Content Include="PagesAdmin\Inicio.aspx" />
+    <Content Include="PagesAdmin\OtrasSecciones.aspx" />
+    <Content Include="PagesAdmin\Personal.aspx" />
+    <Content Include="PagesAdmin\Producto.aspx" />
+    <Content Include="PagesAdmin\Reportes.aspx" />
+    <Content Include="PagesAdmin\Venta.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -94,6 +99,41 @@
     </Compile>
     <Compile Include="PagesAdmin\Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PagesAdmin\OtrasSecciones.aspx.cs">
+      <DependentUpon>OtrasSecciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PagesAdmin\OtrasSecciones.aspx.designer.cs">
+      <DependentUpon>OtrasSecciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PagesAdmin\Personal.aspx.cs">
+      <DependentUpon>Personal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PagesAdmin\Personal.aspx.designer.cs">
+      <DependentUpon>Personal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PagesAdmin\Producto.aspx.cs">
+      <DependentUpon>Producto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PagesAdmin\Producto.aspx.designer.cs">
+      <DependentUpon>Producto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PagesAdmin\Reportes.aspx.cs">
+      <DependentUpon>Reportes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PagesAdmin\Reportes.aspx.designer.cs">
+      <DependentUpon>Reportes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PagesAdmin\Venta.aspx.cs">
+      <DependentUpon>Venta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PagesAdmin\Venta.aspx.designer.cs">
+      <DependentUpon>Venta.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

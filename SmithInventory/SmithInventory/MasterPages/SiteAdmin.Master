@@ -43,13 +43,13 @@
                                         <use xlink:href="#aperture" />
                                     </svg>
                                 </a></li>
-                                <li class="nav-item"><a class="nav-link" href="#">Inicio</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#">Producto</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#">Personal</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#">Venta</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#">Otras Secciones</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#">Reportes</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#"></a></li>
+                                <li class="nav-item"><a class="nav-link" href="../PagesAdmin/Inicio.aspx">Inicio</a></li>
+                                <li class="nav-item"><a class="nav-link" href="../PagesAdmin/Producto.aspx">Producto</a></li>
+                                <li class="nav-item"><a class="nav-link" href="../PagesAdmin/Personal.aspx">Personal</a></li>
+                                <li class="nav-item"><a class="nav-link" href="../PagesAdmin/Venta.aspx">Venta</a></li>
+                                <li class="nav-item"><a class="nav-link" href="../PagesAdmin/OtrasSecciones.aspx">Otras Secciones</a></li>
+                                <li class="nav-item"><a class="nav-link" href="../PagesAdmin/Reportes.aspx">Reportes</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#">Cerrar Sesion</a></li>
                             </ul>
                         </div>
                     </div>
