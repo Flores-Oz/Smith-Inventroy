@@ -16,7 +16,7 @@ namespace SmithInventory
 
         protected void ButtonLogin_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("PagesAdmin/Inicio.aspx");
         }
     }
 }
