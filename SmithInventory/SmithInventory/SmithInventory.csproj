@@ -70,6 +70,7 @@
     <Content Include="CSS\StyleIndex.css" />
     <Content Include="default.aspx" />
     <Content Include="PagesAdmin\Inicio.aspx" />
+    <Content Include="PagesAdmin\Lotes.aspx" />
     <Content Include="PagesAdmin\OtrasSecciones.aspx" />
     <Content Include="PagesAdmin\Personal.aspx" />
     <Content Include="PagesAdmin\Producto.aspx" />
@@ -99,6 +100,13 @@
     </Compile>
     <Compile Include="PagesAdmin\Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PagesAdmin\Lotes.aspx.cs">
+      <DependentUpon>Lotes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PagesAdmin\Lotes.aspx.designer.cs">
+      <DependentUpon>Lotes.aspx</DependentUpon>
     </Compile>
     <Compile Include="PagesAdmin\OtrasSecciones.aspx.cs">
       <DependentUpon>OtrasSecciones.aspx</DependentUpon>

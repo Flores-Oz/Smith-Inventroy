@@ -49,6 +49,7 @@
                                 <li class="nav-item"><a class="nav-link" href="../PagesAdmin/Venta.aspx">Venta</a></li>
                                 <li class="nav-item"><a class="nav-link" href="../PagesAdmin/OtrasSecciones.aspx">Otras Secciones</a></li>
                                 <li class="nav-item"><a class="nav-link" href="../PagesAdmin/Reportes.aspx">Reportes</a></li>
+                                 <li class="nav-item"><a class="nav-link" href="../PagesAdmin/Lotes.aspx">Lotes</a></li>
                                 <li class="nav-item"><a class="nav-link" href="#">Cerrar Sesion</a></li>
                             </ul>
                         </div>
