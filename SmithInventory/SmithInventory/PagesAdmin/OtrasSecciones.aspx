@@ -160,8 +160,33 @@
                                         <div style="overflow-x: auto;">
                                             <asp:GridView ID="GridViewCasaFarmaceutica" runat="server"
                                                  CssClass="table table-striped table-bordered table-responsive"
-                                                AutoGenerateSelectButton="true" 
-                                                ></asp:GridView>
+                                                AutoGenerateSelectButton="true" AllowPaging="true" PageSize="5" 
+                                                OnSelectedIndexChanged="GridViewCasaFarmaceutica_SelectedIndexChanged"
+                                                OnPageIndexChanging="GridViewCasaFarmaceutica_PageIndexChanging"
+                                                OnRowEditing="GridViewCasaFarmaceutica_RowEditing"
+    OnRowCancelingEdit="GridViewCasaFarmaceutica_RowCancelingEdit"
+    OnRowUpdating="GridViewCasaFarmaceutica_RowUpdating">
+                                                <Columns>
+        <asp:BoundField DataField="ID_CasaFarmaceutica" HeaderText="ID" ReadOnly="True" />
+        <asp:TemplateField HeaderText="Casa Farmaceutica">
+            <ItemTemplate>
+                <asp:Label ID="lblCasaFarmaceutica" runat="server" Text='<%# Bind("Casa_Farmaceutica") %>'></asp:Label>
+            </ItemTemplate>
+            <EditItemTemplate>
+                <asp:TextBox ID="txtCasaFarmaceutica" runat="server" Text='<%# Bind("Casa_Farmaceutica") %>'></asp:TextBox>
+            </EditItemTemplate>
+        </asp:TemplateField>
+        <asp:TemplateField HeaderText="Detalle">
+            <ItemTemplate>
+                <asp:Label ID="lblDetalle" runat="server" Text='<%# Bind("Detalle") %>'></asp:Label>
+            </ItemTemplate>
+            <EditItemTemplate>
+                <asp:TextBox ID="txtDetalle" runat="server" Text='<%# Bind("Detalle") %>'></asp:TextBox>
+            </EditItemTemplate>
+        </asp:TemplateField>
+        <asp:CommandField ShowEditButton="True" ButtonType="Button" />
+    </Columns>
+                                                </asp:GridView>
                                         </div>
                                         <!---->
                                     </div>
@@ -222,8 +247,33 @@
                                         <div style="overflow-x: auto;">
                                             <asp:GridView ID="GridViewRoles" runat="server"
                                                  CssClass="table table-striped table-bordered table-responsive"
-                                                AutoGenerateSelectButton="true" 
-                                                ></asp:GridView>
+                                                AutoGenerateSelectButton="true" AllowPaging="true" PageSize="5" 
+                                                OnSelectedIndexChanged="GridViewRoles_SelectedIndexChanged"
+                                                OnPageIndexChanging="GridViewRoles_PageIndexChanging"
+                                                OnRowEditing="GridViewRoles_RowEditing"
+    OnRowCancelingEdit="GridViewRoles_RowCancelingEdit"
+    OnRowUpdating="GridViewRoles_RowUpdating">
+                                                 <Columns>
+        <asp:BoundField DataField="ID_Rol" HeaderText="ID" ReadOnly="True" />
+        <asp:TemplateField HeaderText="Permiso">
+            <ItemTemplate>
+                <asp:Label ID="lblPermiso" runat="server" Text='<%# Bind("Permiso") %>'></asp:Label>
+            </ItemTemplate>
+            <EditItemTemplate>
+                <asp:TextBox ID="txtPermiso" runat="server" Text='<%# Bind("Permiso") %>'></asp:TextBox>
+            </EditItemTemplate>
+        </asp:TemplateField>
+        <asp:TemplateField HeaderText="Descripción">
+            <ItemTemplate>
+                <asp:Label ID="lblDescripcionRol" runat="server" Text='<%# Bind("Descripcion") %>'></asp:Label>
+            </ItemTemplate>
+            <EditItemTemplate>
+                <asp:TextBox ID="txtDescripcionRol" runat="server" Text='<%# Bind("Descripcion") %>'></asp:TextBox>
+            </EditItemTemplate>
+        </asp:TemplateField>
+        <asp:CommandField ShowEditButton="True" ButtonType="Button" />
+    </Columns>
+                                            </asp:GridView>
                                         </div>
                                         <!---->
                                     </div>
@@ -281,7 +331,25 @@
                                             <asp:GridView ID="GridViewTipoCliente" runat="server"
                                                  CssClass="table table-striped table-bordered table-responsive"
                                                 AutoGenerateSelectButton="true" 
-                                                ></asp:GridView>
+                                                 AllowPaging="true" PageSize="5" 
+                                                OnSelectedIndexChanged="GridViewTipoCliente_SelectedIndexChanged"
+                                                OnPageIndexChanging="GridViewTipoCliente_PageIndexChanging"
+                                                OnRowEditing="GridViewTipoCliente_RowEditing"
+    OnRowCancelingEdit="GridViewTipoCliente_RowCancelingEdit"
+    OnRowUpdating="GridViewTipoCliente_RowUpdating">
+                                                 <Columns>
+        <asp:BoundField DataField="ID_Tipo" HeaderText="ID" ReadOnly="True" />
+        <asp:TemplateField HeaderText="Tipo Cliente">
+            <ItemTemplate>
+                <asp:Label ID="lblTipoCliente" runat="server" Text='<%# Bind("Tipo_Cliente") %>'></asp:Label>
+            </ItemTemplate>
+            <EditItemTemplate>
+                <asp:TextBox ID="txtTipoCliente" runat="server" Text='<%# Bind("Tipo_Cliente") %>'></asp:TextBox>
+            </EditItemTemplate>
+        </asp:TemplateField>
+        <asp:CommandField ShowEditButton="True" ButtonType="Button" />
+    </Columns>
+                                                </asp:GridView>
                                         </div>
                                         <!---->
                                     </div>
@@ -339,7 +407,25 @@
                                             <asp:GridView ID="GridViewEstados" runat="server"
                                                  CssClass="table table-striped table-bordered table-responsive"
                                                 AutoGenerateSelectButton="true" 
-                                                ></asp:GridView>
+                                                 AllowPaging="true" PageSize="5" 
+                                                OnSelectedIndexChanged="GridViewEstados_SelectedIndexChanged"
+                                                OnPageIndexChanging="GridViewEstados_PageIndexChanging"
+                                                OnRowEditing="GridViewEstados_RowEditing"
+    OnRowCancelingEdit="GridViewEstados_RowCancelingEdit"
+    OnRowUpdating="GridViewEstados_RowUpdating">
+ <Columns>
+        <asp:BoundField DataField="ID_Estado" HeaderText="ID" ReadOnly="True" />
+        <asp:TemplateField HeaderText="Estado">
+            <ItemTemplate>
+                <asp:Label ID="lblEstado" runat="server" Text='<%# Bind("Estado") %>'></asp:Label>
+            </ItemTemplate>
+            <EditItemTemplate>
+                <asp:TextBox ID="txtEstado" runat="server" Text='<%# Bind("Estado") %>'></asp:TextBox>
+            </EditItemTemplate>
+        </asp:TemplateField>
+        <asp:CommandField ShowEditButton="True" ButtonType="Button" />
+    </Columns>
+                                            </asp:GridView>
                                         </div>
                                         <!---->
                                     </div>

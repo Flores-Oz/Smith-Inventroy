@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -147,6 +148,194 @@ namespace SmithInventory.PagesAdmin
             // Salir del modo de edición
             GridViewCategorias.EditIndex = -1;
             CargarCategorias();
+        }
+
+        protected void GridViewCasaFarmaceutica_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void GridViewCasaFarmaceutica_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridViewCasaFarmaceutica.PageIndex = e.NewPageIndex;
+            CargarFarmaceuticas();
+        }
+
+        protected void GridViewCasaFarmaceutica_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            GridViewCasaFarmaceutica.EditIndex = e.NewEditIndex;
+            CargarFarmaceuticas();
+        }
+
+        protected void GridViewCasaFarmaceutica_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            GridViewCasaFarmaceutica.EditIndex = -1;
+            CargarFarmaceuticas();
+        }
+
+        protected void GridViewCasaFarmaceutica_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            int idCasaFarmaceutica = Convert.ToInt32(GridViewCasaFarmaceutica.DataKeys[e.RowIndex].Value);
+
+            GridViewRow fila = GridViewCasaFarmaceutica.Rows[e.RowIndex];
+
+            TextBox txtCasaFarmaceutica = (TextBox)fila.FindControl("txtCasaFarmaceutica");
+            TextBox txtDetalle = (TextBox)fila.FindControl("txtDetalle");
+
+            string nuevoNombre = txtCasaFarmaceutica.Text;
+            string nuevoDetalle = txtDetalle.Text;
+
+            using (var contexto = new DCSmithDataContext(Global.CADENA))
+            {
+                var casaFarmaceutica = contexto.Casa_Farmaceutica.FirstOrDefault(c => c.ID_CasaFarmaceutica == idCasaFarmaceutica);
+                if (casaFarmaceutica != null)
+                {
+                    casaFarmaceutica.Casa_Farmaceutica1 = nuevoNombre;
+                    casaFarmaceutica.Detalle = nuevoDetalle;
+                    contexto.SubmitChanges();
+                }
+            }
+
+            GridViewCasaFarmaceutica.EditIndex = -1;
+            CargarFarmaceuticas();
+        }
+
+        protected void GridViewRoles_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void GridViewRoles_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridViewRoles.PageIndex = e.NewPageIndex;
+            CargarRoles();
+        }
+
+        protected void GridViewRoles_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            GridViewRoles.EditIndex = e.NewEditIndex;
+            CargarRoles();
+        }
+
+        protected void GridViewRoles_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            GridViewRoles.EditIndex = -1;
+            CargarRoles();
+        }
+
+        protected void GridViewRoles_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            int idRol = Convert.ToInt32(GridViewRoles.DataKeys[e.RowIndex].Value);
+
+            GridViewRow fila = GridViewRoles.Rows[e.RowIndex];
+
+            TextBox txtPermiso = (TextBox)fila.FindControl("txtPermiso");
+            TextBox txtDescripcionRol = (TextBox)fila.FindControl("txtDescripcionRol");
+
+            int nuevoPermiso = Convert.ToInt16(txtPermiso.Text);
+            string nuevaDescripcion = txtDescripcionRol.Text;
+
+            using (var contexto = new DCSmithDataContext(Global.CADENA))
+            {
+                var rol = contexto.Rol.FirstOrDefault(r => r.id_Rol == idRol);
+                if (rol != null)
+                {
+                    rol.Permiso = nuevoPermiso;
+                    rol.Descripcion = nuevaDescripcion;
+                    contexto.SubmitChanges();
+                }
+            }
+
+            GridViewRoles.EditIndex = -1;
+            CargarRoles();
+        }
+
+        protected void GridViewTipoCliente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void GridViewTipoCliente_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+
+        }
+
+        protected void GridViewTipoCliente_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+
+        }
+
+        protected void GridViewTipoCliente_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+
+        }
+
+        protected void GridViewTipoCliente_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            int idTipoCliente = Convert.ToInt32(GridViewTipoCliente.DataKeys[e.RowIndex].Value);
+
+            GridViewRow fila = GridViewTipoCliente.Rows[e.RowIndex];
+
+            TextBox txtTipoCliente = (TextBox)fila.FindControl("txtTipoCliente");
+
+            string nuevoTipoCliente = txtTipoCliente.Text;
+
+            using (var contexto = new DCSmithDataContext(Global.CADENA))
+            {
+                var tipoCliente = contexto.Tipo_Cliente.FirstOrDefault(tc => tc.id_Tipo == idTipoCliente);
+                if (tipoCliente != null)
+                {
+                    tipoCliente.Tipo_Cliente1 = nuevoTipoCliente;
+                    contexto.SubmitChanges();
+                }
+            }
+
+            GridViewTipoCliente.EditIndex = -1;
+            CargarTipoCliente();
+        }
+
+        protected void GridViewEstados_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void GridViewEstados_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+
+        }
+
+        protected void GridViewEstados_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+
+        }
+
+        protected void GridViewEstados_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+
+        }
+
+        protected void GridViewEstados_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            int idEstado = Convert.ToInt32(gvEstados.DataKeys[e.RowIndex].Value);
+
+            GridViewRow fila = gvEstados.Rows[e.RowIndex];
+
+            TextBox txtEstado = (TextBox)fila.FindControl("txtEstado");
+
+            string nuevoEstado = txtEstado.Text;
+
+            using (var contexto = new DCSmithDataContext(Global.CADENA))
+            {
+                var estado = contexto.Estados.FirstOrDefault(es => es.ID_Estado == idEstado);
+                if (estado != null)
+                {
+                    estado.Estado = nuevoEstado;
+                    contexto.SubmitChanges();
+                }
+            }
+
+            gvEstados.EditIndex = -1;
+            CargarEstados();
         }
     }
 }
