@@ -69,9 +69,37 @@
                                         </div>
                                         <div style="overflow-x: auto;">
                                             <asp:GridView ID="GridViewCategorias" runat="server"
+                                                    AutoGenerateColumns="False" 
+    DataKeyNames="ID_Categoria"
                                                  CssClass="table table-striped table-bordered table-responsive"
-                                                AutoGenerateSelectButton="true" 
-                                                ></asp:GridView>
+                                                AutoGenerateSelectButton="true" AllowPaging="true" PageSize="5" 
+                                                OnSelectedIndexChanged="GridViewCategorias_SelectedIndexChanged"
+                                                OnPageIndexChanging="GridViewCategorias_PageIndexChanging"
+                                                OnRowEditing="GridViewCategorias_RowEditing"
+    OnRowCancelingEdit="GridViewCategorias_RowCancelingEdit"
+    OnRowUpdating="GridViewCategorias_RowUpdating"
+                                                >
+                                                     <Columns>
+        <asp:BoundField DataField="ID_Categoria" HeaderText="ID" ReadOnly="True" />
+        <asp:TemplateField HeaderText="Nombre">
+            <ItemTemplate>
+                <asp:Label ID="lblNombreCategoria" runat="server" Text='<%# Bind("Nombre_Categoria") %>'></asp:Label>
+            </ItemTemplate>
+            <EditItemTemplate>
+                <asp:TextBox ID="txtNombreCategoria" runat="server" Text='<%# Bind("Nombre_Categoria") %>'></asp:TextBox>
+            </EditItemTemplate>
+        </asp:TemplateField>
+        <asp:TemplateField HeaderText="Descripción">
+            <ItemTemplate>
+                <asp:Label ID="lblDescripcionCategoria" runat="server" Text='<%# Bind("Descripcion_Categoria") %>'></asp:Label>
+            </ItemTemplate>
+            <EditItemTemplate>
+                <asp:TextBox ID="txtDescripcionCategoria" runat="server" Text='<%# Bind("Descripcion_Categoria") %>'></asp:TextBox>
+            </EditItemTemplate>
+        </asp:TemplateField>
+        <asp:CommandField ShowEditButton="True" ButtonType="Button" />
+    </Columns>
+                                            </asp:GridView>
                                         </div>
                                         <!---->
                                     </div>

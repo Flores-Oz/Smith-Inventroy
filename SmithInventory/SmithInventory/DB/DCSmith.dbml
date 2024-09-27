@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="SmithInventory" Class="DCSmithDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="dbo.Casa_Farmaceutica" Member="Casa_Farmaceutica">
+    <Type Name="Casa_Farmaceutica">
+      <Column Name="ID_CasaFarmaceutica" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Casa_Farmaceutica" Member="Casa_Farmaceutica1" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Detalle" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Association Name="Casa_Farmaceutica_Lote_Ingreso" Member="Lote_Ingreso" ThisKey="ID_CasaFarmaceutica" OtherKey="ID_CasaFarmaceutica" Type="Lote_Ingreso" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Categoria" Member="Categoria">
+    <Type Name="Categoria">
+      <Column Name="ID_Categoria" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre_Categoria" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion_Categoria" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Association Name="Categoria_Producto" Member="Producto" ThisKey="ID_Categoria" OtherKey="ID_Categoria" Type="Producto" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Cliente" Member="Cliente">
+    <Type Name="Cliente">
+      <Column Name="ID_Cliente" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DPI" Type="System.String" DbType="NVarChar(13) NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre_Completo" Type="System.String" DbType="NVarChar(75) NOT NULL" CanBeNull="false" />
+      <Column Name="Telefono" Type="System.String" DbType="NVarChar(8) NOT NULL" CanBeNull="false" />
+      <Column Name="Direccion" Type="System.String" DbType="NVarChar(95) NOT NULL" CanBeNull="false" />
+      <Column Name="id_Tipo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Cliente_Detalles_Venta" Member="Detalles_Venta" ThisKey="ID_Cliente" OtherKey="ID_Cliente" Type="Detalles_Venta" />
+      <Association Name="Tipo_Cliente_Cliente" Member="Tipo_Cliente" ThisKey="id_Tipo" OtherKey="id_Tipo" Type="Tipo_Cliente" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Detalle_Lote_Ingreso" Member="Detalle_Lote_Ingreso">
+    <Type Name="Detalle_Lote_Ingreso">
+      <Column Name="id_DetalleLote" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_Lote" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_Producto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Cantidad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Precio" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="Descuento" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SubTotal" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="Fecha_Caducida" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Lote_Ingreso_Detalle_Lote_Ingreso" Member="Lote_Ingreso" ThisKey="id_Lote" OtherKey="id_Lote" Type="Lote_Ingreso" IsForeignKey="true" />
+      <Association Name="Producto_Detalle_Lote_Ingreso" Member="Producto" ThisKey="ID_Producto" OtherKey="ID_Producto" Type="Producto" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Detalles_Venta" Member="Detalles_Venta">
+    <Type Name="Detalles_Venta">
+      <Column Name="id_DetalleVenta" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Cantidad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Precio" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="Subtotal" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="Descuento" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="SubTotal_Descuento" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="id_Venta" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_Producto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_Cliente" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Cliente_Detalles_Venta" Member="Cliente" ThisKey="ID_Cliente" OtherKey="ID_Cliente" Type="Cliente" IsForeignKey="true" />
+      <Association Name="Producto_Detalles_Venta" Member="Producto" ThisKey="ID_Producto" OtherKey="ID_Producto" Type="Producto" IsForeignKey="true" />
+      <Association Name="Venta_Detalles_Venta" Member="Venta" ThisKey="id_Venta" OtherKey="id_Venta" Type="Venta" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Estados" Member="Estados">
+    <Type Name="Estados">
+      <Column Name="id_Estado" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Estados_Venta" Member="Venta" ThisKey="id_Estado" OtherKey="id_Estado" Type="Venta" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Lote_Ingreso" Member="Lote_Ingreso">
+    <Type Name="Lote_Ingreso">
+      <Column Name="id_Lote" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_CasaFarmaceutica" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Fecha_Ingreso" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Estado" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Descuento" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Total_Lote" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="id_Usuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Lote_Ingreso_Detalle_Lote_Ingreso" Member="Detalle_Lote_Ingreso" ThisKey="id_Lote" OtherKey="id_Lote" Type="Detalle_Lote_Ingreso" />
+      <Association Name="Casa_Farmaceutica_Lote_Ingreso" Member="Casa_Farmaceutica" ThisKey="ID_CasaFarmaceutica" OtherKey="ID_CasaFarmaceutica" Type="Casa_Farmaceutica" IsForeignKey="true" />
+      <Association Name="Usuario_Lote_Ingreso" Member="Usuario" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Usuario" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Personal" Member="Personal">
+    <Type Name="Personal">
+      <Column Name="id_Personal" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DPI" Type="System.String" DbType="NVarChar(13) NOT NULL" CanBeNull="false" />
+      <Column Name="Primer_Nombre" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Segundo_Nombre" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Primer_Apellido" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Segundo_Apellido" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Direccion" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Telefono" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="id_Usuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Usuario_Personal" Member="Usuario" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Usuario" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Producto" Member="Producto">
+    <Type Name="Producto">
+      <Column Name="ID_Producto" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre_Producto" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Precio_Costo" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="Precio_Venta" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="Estado" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ID_Categoria" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Producto_Detalle_Lote_Ingreso" Member="Detalle_Lote_Ingreso" ThisKey="ID_Producto" OtherKey="ID_Producto" Type="Detalle_Lote_Ingreso" />
+      <Association Name="Producto_Detalles_Venta" Member="Detalles_Venta" ThisKey="ID_Producto" OtherKey="ID_Producto" Type="Detalles_Venta" />
+      <Association Name="Categoria_Producto" Member="Categoria" ThisKey="ID_Categoria" OtherKey="ID_Categoria" Type="Categoria" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Rol" Member="Rol">
+    <Type Name="Rol">
+      <Column Name="id_Rol" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Permiso" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Association Name="Rol_Usuario" Member="Usuario" ThisKey="id_Rol" OtherKey="id_Rol" Type="Usuario" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tipo_Cliente" Member="Tipo_Cliente">
+    <Type Name="Tipo_Cliente">
+      <Column Name="id_Tipo" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Tipo_Cliente" Member="Tipo_Cliente1" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Tipo_Cliente_Cliente" Member="Cliente" ThisKey="id_Tipo" OtherKey="id_Tipo" Type="Cliente" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Usuario" Member="Usuario">
+    <Type Name="Usuario">
+      <Column Name="id_Usuario" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_Rol" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Usuario" Member="Usuario1" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Estado" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Fecha_Creacion" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Fecha_Desactivacion" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Usuario_Lote_Ingreso" Member="Lote_Ingreso" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Lote_Ingreso" />
+      <Association Name="Usuario_Personal" Member="Personal" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Personal" />
+      <Association Name="Usuario_Venta" Member="Venta" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Venta" />
+      <Association Name="Rol_Usuario" Member="Rol" ThisKey="id_Rol" OtherKey="id_Rol" Type="Rol" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Venta" Member="Venta">
+    <Type Name="Venta">
+      <Column Name="id_Venta" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Fecha_Venta" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Total_Venta" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="Descuento" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Total_Descuento" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="id_Usuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_Estado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Venta_Detalles_Venta" Member="Detalles_Venta" ThisKey="id_Venta" OtherKey="id_Venta" Type="Detalles_Venta" />
+      <Association Name="Estados_Venta" Member="Estados" ThisKey="id_Estado" OtherKey="id_Estado" Type="Estados" IsForeignKey="true" />
+      <Association Name="Usuario_Venta" Member="Usuario" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Usuario" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

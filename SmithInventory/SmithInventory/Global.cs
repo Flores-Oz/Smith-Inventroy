@@ -7,6 +7,6 @@ namespace SmithInventory
 {
     public class Global
     {
-        public static string CADENA = "";
+        public static string CADENA = "Data Source=GNARO\\SQLEXPRESS;Initial Catalog=SmithInventory;Persist Security Info=True;User ID=sa;Password=ImpactRail123";
     }
 }
