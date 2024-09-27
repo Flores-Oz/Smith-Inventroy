@@ -13,5 +13,10 @@ namespace SmithInventory.PagesAdmin
         {
 
         }
+
+        protected void ButtonGuardarCat_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

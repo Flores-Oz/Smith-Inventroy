@@ -141,13 +141,13 @@ namespace SmithInventory.PagesAdmin
         protected global::System.Web.UI.WebControls.Button ButtonGuardarTipo;
 
         /// <summary>
-        /// Control GridView3.
+        /// Control GridViewTipoCliente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView3;
+        protected global::System.Web.UI.WebControls.GridView GridViewTipoCliente;
 
         /// <summary>
         /// Control TextBox7.
@@ -159,30 +159,21 @@ namespace SmithInventory.PagesAdmin
         protected global::System.Web.UI.WebControls.TextBox TextBox7;
 
         /// <summary>
-        /// Control TextBox8.
+        /// Control ButtonGuardarEstado.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox8;
+        protected global::System.Web.UI.WebControls.Button ButtonGuardarEstado;
 
         /// <summary>
-        /// Control Button4.
+        /// Control GridViewEstados.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button4;
-
-        /// <summary>
-        /// Control GridView4.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView4;
+        protected global::System.Web.UI.WebControls.GridView GridViewEstados;
     }
 }

@@ -44,7 +44,7 @@
                                                 <label for="inputEmail" class="form-label text-white">Descripcion Categoria</label>
                                                 <asp:TextBox ID="TextBoxDescripcionCat" CssClass="form-control rounded-3" placeholder="Ingrese una Descripcion(Puede quedar vacio)" runat="server"></asp:TextBox>
                                             </div>
-                                            <asp:Button ID="ButtonGuardarCat" CssClass="btn btn-color btn-large" runat="server" Text="Guardar" />
+                                            <asp:Button ID="ButtonGuardarCat" CssClass="btn btn-color btn-large" runat="server" Text="Guardar" OnClick="ButtonGuardarCat_Click"/>
                                         </div>
                                     </div>
                                 </div>
@@ -243,14 +243,14 @@
                             <div class="rounded-4 shadow bg-secundary">
                                 <div class="modal-content color1">
                                     <div class="modal-header">
-                                        <h5 class="modal-title text-white">Categorias Existentes</h5>
+                                        <h5 class="modal-title text-white">Clientes Existentes</h5>
                                     </div>
                                     <div class="modal-body">
                                         <!---->
                                         <div class="d-flex justify-content-center align-items-center">
                                         </div>
                                         <div style="overflow-x: auto;">
-                                            <asp:GridView ID="GridView3" runat="server"
+                                            <asp:GridView ID="GridViewTipoCliente" runat="server"
                                                  CssClass="table table-striped table-bordered table-responsive"
                                                 AutoGenerateSelectButton="true" 
                                                 ></asp:GridView>
@@ -265,7 +265,7 @@
             </div>
         </div>
         <!--  -->
-         <!--  -->
+         <!-- Estados -->
         <div class="container">
             <div class="row">
                 <!-- Columna 1: Formulario Modal -->
@@ -276,19 +276,15 @@
                             <div class="rounded-4 shadow bg-secundary">
                                 <div class="modal-content color1">
                                     <div class="modal-header">
-                                        <h5 class="modal-title text-white">Categoria</h5>
+                                        <h5 class="modal-title text-white">Estados</h5>
                                     </div>
                                     <div class="modal-body">
                                         <div>
                                             <div class="mb-3">
-                                                <label for="inputName" class="form-label text-white">Nombre Categoria</label>
-                                                <asp:TextBox ID="TextBox7" CssClass="form-control rounded-3" placeholder="Ingrese Categoria" runat="server"></asp:TextBox>
+                                                <label for="inputName" class="form-label text-white">Estados</label>
+                                                <asp:TextBox ID="TextBox7" CssClass="form-control rounded-3" placeholder="Ingrese Estado" runat="server"></asp:TextBox>
                                             </div>
-                                            <div class="mb-3">
-                                                <label for="inputEmail" class="form-label text-white">Descripcion Categoria</label>
-                                                <asp:TextBox ID="TextBox8" CssClass="form-control rounded-3" placeholder="Ingrese una Descripcion(Puede quedar vacio)" runat="server"></asp:TextBox>
-                                            </div>
-                                            <asp:Button ID="Button4" CssClass="btn btn-color btn-large" runat="server" Text="Guardar" />
+                                            <asp:Button ID="ButtonGuardarEstado" CssClass="btn btn-color btn-large" runat="server" Text="Guardar" />
                                         </div>
                                     </div>
                                 </div>
@@ -305,14 +301,14 @@
                             <div class="rounded-4 shadow bg-secundary">
                                 <div class="modal-content color1">
                                     <div class="modal-header">
-                                        <h5 class="modal-title text-white">Categorias Existentes</h5>
+                                        <h5 class="modal-title text-white">Estados Existentes</h5>
                                     </div>
                                     <div class="modal-body">
                                         <!---->
                                         <div class="d-flex justify-content-center align-items-center">
                                         </div>
                                         <div style="overflow-x: auto;">
-                                            <asp:GridView ID="GridView4" runat="server"
+                                            <asp:GridView ID="GridViewEstados" runat="server"
                                                  CssClass="table table-striped table-bordered table-responsive"
                                                 AutoGenerateSelectButton="true" 
                                                 ></asp:GridView>
