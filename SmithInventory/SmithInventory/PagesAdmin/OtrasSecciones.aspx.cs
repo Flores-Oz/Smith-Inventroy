@@ -52,8 +52,8 @@ namespace SmithInventory.PagesAdmin
         {
             var tipoCliente = from clien in Conn.Tipo_Cliente
                         select clien;
-            GridViewTipoCliente.DataSource = tipoCliente;
-            GridViewTipoCliente.DataBind();
+            //GridViewTipoCliente.DataSource = tipoCliente;
+            //GridViewTipoCliente.DataBind();
         }
 
         public void CargarEstados()
@@ -66,6 +66,7 @@ namespace SmithInventory.PagesAdmin
 
         protected void ButtonGuardarCat_Click(object sender, EventArgs e)
         {
+            /*
             //GuardarCategoria
             using (var contexto = new DCSmithDataContext(Global.CADENA))
             {
@@ -86,9 +87,53 @@ namespace SmithInventory.PagesAdmin
                 TextBoxNombreCategoria.Text = string.Empty;
                 TextBoxDescripcionCat.Text = string.Empty;
 
-                // Recargar las categorías para reflejar los cambios
-                CargarCategorias();
+                // Recargar las categorías para reflejar los cambios */
+            /* CargarCategorias(); 
+
+        }
+            */
+            // Verificar si el campo Nombre_Categoria está vacío
+            if (string.IsNullOrWhiteSpace(TextBoxNombreCategoria.Text))
+            {
+                // Mostrar mensaje de error (el nombre de la categoría es obligatorio)
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showErrorMessage();", true);
+                return; // Salir sin guardar
             }
+
+            try
+            {
+                using (var contexto = new DCSmithDataContext(Global.CADENA))
+                {
+                    // Crear una nueva instancia de la clase Categoria
+                    Categoria nuevaCategoria = new Categoria
+                    {
+                        Nombre_Categoria = TextBoxNombreCategoria.Text,
+                        Descripcion_Categoria = TextBoxDescripcionCat.Text
+                    };
+
+                    // Agregar la nueva categoría al contexto
+                    contexto.Categoria.InsertOnSubmit(nuevaCategoria);
+
+                    // Guardar los cambios en la base de datos
+                    contexto.SubmitChanges();
+
+                    // Limpiar los campos del formulario
+                    TextBoxNombreCategoria.Text = string.Empty;
+                    TextBoxDescripcionCat.Text = string.Empty;
+
+                    // Recargar las categorías para reflejar los cambios
+                    CargarCategorias();
+
+                    // Mostrar mensaje de éxito
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showSuccessMessage();", true);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Mostrar mensaje de error si ocurre un problema
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showErrorMessage();", true);
+            }
+
         }
 
         protected void GridViewCategorias_SelectedIndexChanged(object sender, EventArgs e)
@@ -144,7 +189,7 @@ namespace SmithInventory.PagesAdmin
                     contexto.SubmitChanges();
                 }
             }
-
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showUpdateMessage();", true);
             // Salir del modo de edición
             GridViewCategorias.EditIndex = -1;
             CargarCategorias();
@@ -195,7 +240,7 @@ namespace SmithInventory.PagesAdmin
                     contexto.SubmitChanges();
                 }
             }
-
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showUpdateMessageCasaFarmaceutica();", true);
             GridViewCasaFarmaceutica.EditIndex = -1;
             CargarFarmaceuticas();
         }
@@ -245,29 +290,32 @@ namespace SmithInventory.PagesAdmin
                     contexto.SubmitChanges();
                 }
             }
-
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showUpdateMessageRol();", true);
             GridViewRoles.EditIndex = -1;
             CargarRoles();
         }
 
         protected void GridViewTipoCliente_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            
         }
 
         protected void GridViewTipoCliente_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-
+            GridViewTipoCliente.PageIndex = e.NewPageIndex;
+            CargarTipoCliente();
         }
 
         protected void GridViewTipoCliente_RowEditing(object sender, GridViewEditEventArgs e)
         {
-
+            GridViewTipoCliente.EditIndex = e.NewEditIndex;
+            CargarTipoCliente();
         }
 
         protected void GridViewTipoCliente_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
-
+            GridViewTipoCliente.EditIndex = -1;
+            CargarTipoCliente();
         }
 
         protected void GridViewTipoCliente_RowUpdating(object sender, GridViewUpdateEventArgs e)
@@ -289,7 +337,7 @@ namespace SmithInventory.PagesAdmin
                     contexto.SubmitChanges();
                 }
             }
-
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showUpdateMessageTipoCliente();", true);
             GridViewTipoCliente.EditIndex = -1;
             CargarTipoCliente();
         }
@@ -301,24 +349,27 @@ namespace SmithInventory.PagesAdmin
 
         protected void GridViewEstados_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-
+            GridViewEstados.PageIndex = e.NewPageIndex;
+            CargarEstados();
         }
 
         protected void GridViewEstados_RowEditing(object sender, GridViewEditEventArgs e)
         {
-
+            GridViewEstados.EditIndex = e.NewEditIndex;
+            CargarEstados();
         }
 
         protected void GridViewEstados_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
-
+            GridViewEstados.EditIndex = -1;
+            CargarEstados();
         }
 
         protected void GridViewEstados_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
-            int idEstado = Convert.ToInt32(gvEstados.DataKeys[e.RowIndex].Value);
+            int idEstado = Convert.ToInt32(GridViewEstados.DataKeys[e.RowIndex].Value);
 
-            GridViewRow fila = gvEstados.Rows[e.RowIndex];
+            GridViewRow fila = GridViewEstados.Rows[e.RowIndex];
 
             TextBox txtEstado = (TextBox)fila.FindControl("txtEstado");
 
@@ -326,16 +377,103 @@ namespace SmithInventory.PagesAdmin
 
             using (var contexto = new DCSmithDataContext(Global.CADENA))
             {
-                var estado = contexto.Estados.FirstOrDefault(es => es.ID_Estado == idEstado);
+                var estado = contexto.Estados.FirstOrDefault(es => es.id_Estado == idEstado);
                 if (estado != null)
                 {
                     estado.Estado = nuevoEstado;
                     contexto.SubmitChanges();
                 }
             }
-
-            gvEstados.EditIndex = -1;
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showUpdateMessageEstados();", true);
+            GridViewEstados.EditIndex = -1;
             CargarEstados();
+        }
+
+        protected void ButtonGuardarEstado_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ButtonGuardarTipo_Click(object sender, EventArgs e)
+        {
+            // Verificar si el campo Tipo Cliente está vacío
+            if (string.IsNullOrWhiteSpace(TextBoxTipoCliente.Text))
+            {
+                // Mostrar mensaje de error si el campo está vacío
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showErrorMessageTipoCliente();", true);
+                return;
+            }
+
+            try
+            {
+                using (var contexto = new DCSmithDataContext(Global.CADENA))
+                {
+                    // Crear una nueva instancia de la clase TipoCliente
+                    Tipo_Cliente nuevoTipoCliente = new Tipo_Cliente
+                    {
+                        Tipo_Cliente1 = TextBoxTipoCliente.Text
+                    };
+
+                    // Agregar el nuevo tipo de cliente al contexto
+                    contexto.Tipo_Cliente.InsertOnSubmit(nuevoTipoCliente);
+                    contexto.SubmitChanges();
+
+                    // Limpiar el campo de texto
+                    TextBoxTipoCliente.Text = string.Empty;
+
+                    // Mostrar mensaje de éxito
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showSuccessMessageTipoCliente();", true);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Mostrar mensaje de error si ocurre algún problema
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showErrorMessageTipoCliente();", true);
+            }
+        }
+
+        protected void ButtonGuardarRol_Click(object sender, EventArgs e)
+        {
+            // Verificar si el campo Rol está vacío
+            if (string.IsNullOrWhiteSpace(TextBoxRol.Text))
+            {
+                // Mostrar mensaje de error si el campo está vacío
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showErrorMessageRol();", true);
+                return;
+            }
+
+            try
+            {
+                using (var contexto = new DCSmithDataContext(Global.CADENA))
+                {
+                    // Crear una nueva instancia de la clase Rol
+                    Rol nuevoRol = new Rol
+                    {
+                        Permiso = Convert.ToInt16(TextBoxRol.Text),
+                       Descripcion = TextBoxDescripcionRol.Text
+                    };
+
+                    // Agregar el nuevo rol al contexto
+                    contexto.Rol.InsertOnSubmit(nuevoRol);
+                    contexto.SubmitChanges();
+
+                    // Limpiar el campo de texto
+                    TextBoxRol.Text = string.Empty;
+
+                    // Mostrar mensaje de éxito
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showSuccessMessageRol();", true);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Mostrar mensaje de error si ocurre algún problema
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showErrorMessageRol();", true);
+            }
+        }
+
+        protected void ButtonGuardarFarm_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

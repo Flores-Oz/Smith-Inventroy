@@ -13,5 +13,55 @@ namespace SmithInventory.PagesAdmin
         {
 
         }
+
+        protected void Unnamed_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Unnamed_Click1(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ButtonGuardarUser_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ButtonGuardarPersonal_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void gvUsuarios_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+
+        }
+
+        protected void gvUsuarios_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+
+        }
+
+        protected void gvUsuarios_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+
+        }
+
+        protected void gvPersonal_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+
+        }
+
+        protected void gvPersonal_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+
+        }
+
+        protected void gvPersonal_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+
+        }
     }
 }
