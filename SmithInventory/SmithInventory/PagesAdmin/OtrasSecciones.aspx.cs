@@ -52,8 +52,8 @@ namespace SmithInventory.PagesAdmin
         {
             var tipoCliente = from clien in Conn.Tipo_Cliente
                         select clien;
-            //GridViewTipoCliente.DataSource = tipoCliente;
-            //GridViewTipoCliente.DataBind();
+            GridViewTipoCliente.DataSource = tipoCliente;
+            GridViewTipoCliente.DataBind();
         }
 
         public void CargarEstados()
@@ -384,14 +384,47 @@ namespace SmithInventory.PagesAdmin
                     contexto.SubmitChanges();
                 }
             }
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showUpdateMessageEstados();", true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showUpdateMessageEstado();", true);
             GridViewEstados.EditIndex = -1;
             CargarEstados();
         }
 
         protected void ButtonGuardarEstado_Click(object sender, EventArgs e)
         {
+            // Verificar si el campo Estado está vacío
+            if (string.IsNullOrWhiteSpace(TextBoxEstado.Text))
+            {
+                // Mostrar mensaje de error si el campo está vacío
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showErrorMessageEstado();", true);
+                return;
+            }
 
+            try
+            {
+                using (var contexto = new DCSmithDataContext(Global.CADENA))
+                {
+                    // Crear una nueva instancia de la clase TipoCliente
+                    Estados estado = new Estados
+                    {
+                        Estado = TextBoxEstado.Text
+                    };
+
+                    // Agregar el nuevo tipo de cliente al contexto
+                    contexto.Estados.InsertOnSubmit(estado);
+                    contexto.SubmitChanges();
+
+                    // Limpiar el campo de texto
+                    TextBoxEstado.Text = string.Empty;
+                    CargarEstados();
+                    // Mostrar mensaje de éxito
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showSuccessMessageEstado();", true);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Mostrar mensaje de error si ocurre algún problema
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showErrorMessageEstado();", true);
+            }
         }
 
         protected void ButtonGuardarTipo_Click(object sender, EventArgs e)
@@ -420,7 +453,7 @@ namespace SmithInventory.PagesAdmin
 
                     // Limpiar el campo de texto
                     TextBoxTipoCliente.Text = string.Empty;
-
+                    CargarTipoCliente();
                     // Mostrar mensaje de éxito
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showSuccessMessageTipoCliente();", true);
                 }
@@ -459,7 +492,7 @@ namespace SmithInventory.PagesAdmin
 
                     // Limpiar el campo de texto
                     TextBoxRol.Text = string.Empty;
-
+                    CargarRoles();
                     // Mostrar mensaje de éxito
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showSuccessMessageRol();", true);
                 }
@@ -473,7 +506,42 @@ namespace SmithInventory.PagesAdmin
 
         protected void ButtonGuardarFarm_Click(object sender, EventArgs e)
         {
+            // Verificar si el campo Casa Farmaceutica está vacío
+            if (string.IsNullOrWhiteSpace(TextBoxCasaFarm.Text))
+            {
+                // Mostrar mensaje de error si el campo está vacío
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showErrorMessageCasaFarmaceutica();", true);
+                return;
+            }
 
+            try
+            {
+                using (var contexto = new DCSmithDataContext(Global.CADENA))
+                {
+                    // Crear una nueva instancia de la clase Rol
+                    Casa_Farmaceutica casa = new Casa_Farmaceutica
+                    {
+                       Casa_Farmaceutica1  = TextBoxCasaFarm.Text,
+                       Detalle = TextBoxDetalleFarm.Text
+                    };
+
+                    // Agregar el nuevo rol al contexto
+                    contexto.Casa_Farmaceutica.InsertOnSubmit(casa);
+                    contexto.SubmitChanges();
+
+                    // Limpiar el campo de texto
+                    TextBoxCasaFarm.Text = string.Empty;
+                    TextBoxDetalleFarm.Text = string.Empty;
+                    CargarFarmaceuticas();
+                    // Mostrar mensaje de éxito
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showSuccessMessageCasaFarmaceutica();", true);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Mostrar mensaje de error si ocurre algún problema
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showErrorMessageCasaFarmaceutica();", true);
+            }
         }
     }
 }

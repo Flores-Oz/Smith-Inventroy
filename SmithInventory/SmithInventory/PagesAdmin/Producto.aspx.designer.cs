@@ -51,13 +51,13 @@ namespace SmithInventory.PagesAdmin
         protected global::System.Web.UI.WebControls.TextBox txtPrecioVenta;
 
         /// <summary>
-        /// Control ddlEstado.
+        /// Control chkEstado.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEstado;
+        protected global::System.Web.UI.WebControls.CheckBox chkEstado;
 
         /// <summary>
         /// Control ddlCategoria.
@@ -69,12 +69,30 @@ namespace SmithInventory.PagesAdmin
         protected global::System.Web.UI.WebControls.DropDownList ddlCategoria;
 
         /// <summary>
-        /// Control gvProductos.
+        /// Control ButtonGuardarProducto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvProductos;
+        protected global::System.Web.UI.WebControls.Button ButtonGuardarProducto;
+
+        /// <summary>
+        /// Control ButtonCancelarProducto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonCancelarProducto;
+
+        /// <summary>
+        /// Control gvProducto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvProducto;
     }
 }

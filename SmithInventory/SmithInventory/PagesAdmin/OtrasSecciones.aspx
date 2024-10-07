@@ -130,7 +130,7 @@
                                                 <asp:TextBox ID="TextBoxCasaFarm" CssClass="form-control rounded-3" placeholder="Ingrese Casa Farmaceutica" runat="server"></asp:TextBox>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="inputEmail" class="form-label text-white">Descripcion Categoria</label>
+                                                <label for="inputEmail" class="form-label text-white">Descripcion Casa Farmaceutica</label>
                                                 <asp:TextBox ID="TextBoxDetalleFarm" CssClass="form-control rounded-3" placeholder="Ingrese una Descripcion(Puede quedar vacio)" runat="server"></asp:TextBox>
                                             </div>
                                             <asp:Button ID="ButtonGuardarFarm" CssClass="btn btn-color btn-large" runat="server" Text="Guardar" OnClick="ButtonGuardarFarm_Click" />
@@ -159,20 +159,21 @@
                                         <div style="overflow-x: auto;">
                                             <asp:GridView ID="GridViewCasaFarmaceutica" runat="server"
                                                 CssClass="table table-striped table-bordered table-responsive"
-                                                AutoGenerateSelectButton="false" AllowPaging="true" PageSize="5"
+                                                AutoGenerateSelectButton="false" AllowPaging="true" PageSize="5" AutoGenerateColumns="false"
                                                 OnSelectedIndexChanged="GridViewCasaFarmaceutica_SelectedIndexChanged"
                                                 OnPageIndexChanging="GridViewCasaFarmaceutica_PageIndexChanging"
                                                 OnRowEditing="GridViewCasaFarmaceutica_RowEditing"
                                                 OnRowCancelingEdit="GridViewCasaFarmaceutica_RowCancelingEdit"
-                                                OnRowUpdating="GridViewCasaFarmaceutica_RowUpdating">
+                                                OnRowUpdating="GridViewCasaFarmaceutica_RowUpdating"
+                                                DataKeyNames="ID_CasaFarmaceutica">
                                                 <Columns>
                                                     <asp:BoundField DataField="ID_CasaFarmaceutica" HeaderText="ID" ReadOnly="True" />
                                                     <asp:TemplateField HeaderText="Casa Farmaceutica">
                                                         <ItemTemplate>
-                                                            <asp:Label ID="lblCasaFarmaceutica" runat="server" Text='<%# Bind("Casa_Farmaceutica") %>'></asp:Label>
+                                                            <asp:Label ID="lblCasaFarmaceutica" runat="server" Text='<%# Bind("Casa_Farmaceutica1") %>'></asp:Label>
                                                         </ItemTemplate>
                                                         <EditItemTemplate>
-                                                            <asp:TextBox ID="txtCasaFarmaceutica" runat="server" Text='<%# Bind("Casa_Farmaceutica") %>'></asp:TextBox>
+                                                            <asp:TextBox ID="txtCasaFarmaceutica" runat="server" Text='<%# Bind("Casa_Farmaceutica1") %>'></asp:TextBox>
                                                         </EditItemTemplate>
                                                     </asp:TemplateField>
                                                     <asp:TemplateField HeaderText="Detalle">
@@ -251,7 +252,8 @@
                                                 OnPageIndexChanging="GridViewRoles_PageIndexChanging"
                                                 OnRowEditing="GridViewRoles_RowEditing"
                                                 OnRowCancelingEdit="GridViewRoles_RowCancelingEdit"
-                                                OnRowUpdating="GridViewRoles_RowUpdating">
+                                                OnRowUpdating="GridViewRoles_RowUpdating"
+                                                DataKeyNames="id_Rol">
                                                 <Columns>
                                                     <asp:BoundField DataField="ID_Rol" HeaderText="ID" ReadOnly="True" />
                                                     <asp:TemplateField HeaderText="Permiso">
@@ -335,15 +337,16 @@
                                                 OnPageIndexChanging="GridViewTipoCliente_PageIndexChanging"
                                                 OnRowEditing="GridViewTipoCliente_RowEditing"
                                                 OnRowCancelingEdit="GridViewTipoCliente_RowCancelingEdit"
-                                                OnRowUpdating="GridViewTipoCliente_RowUpdating">
+                                                OnRowUpdating="GridViewTipoCliente_RowUpdating"
+                                                DataKeyNames="id_Tipo">
                                                 <Columns>
                                                     <asp:BoundField DataField="id_Tipo" HeaderText="ID" ReadOnly="True" />
                                                     <asp:TemplateField HeaderText="Tipo Cliente">
                                                         <ItemTemplate>
-                                                            <asp:Label ID="lblTipoCliente" runat="server" Text='<%# Bind("Tipo_Cliente") %>'></asp:Label>
+                                                            <asp:Label ID="lblTipoCliente" runat="server" Text='<%# Bind("Tipo_Cliente1") %>'></asp:Label>
                                                         </ItemTemplate>
                                                         <EditItemTemplate>
-                                                            <asp:TextBox ID="txtTipoCliente" runat="server" Text='<%# Bind("Tipo_Cliente") %>'></asp:TextBox>
+                                                            <asp:TextBox ID="txtTipoCliente" runat="server" Text='<%# Bind("Tipo_Cliente1") %>'></asp:TextBox>
                                                         </EditItemTemplate>
                                                     </asp:TemplateField>
                                                     <asp:CommandField ShowEditButton="True" ButtonType="Button" />
@@ -377,7 +380,7 @@
                                             <div>
                                                 <div class="mb-3">
                                                     <label for="inputName" class="form-label text-white">Estados</label>
-                                                    <asp:TextBox ID="TextBox7" CssClass="form-control rounded-3" placeholder="Ingrese Estado" runat="server"></asp:TextBox>
+                                                    <asp:TextBox ID="TextBoxEstado" CssClass="form-control rounded-3" placeholder="Ingrese Estado" runat="server"></asp:TextBox>
                                                 </div>
                                                 <asp:Button ID="ButtonGuardarEstado" CssClass="btn btn-color btn-large" runat="server" Text="Guardar" OnClick="ButtonGuardarEstado_Click" />
                                             </div>
@@ -411,7 +414,8 @@
                                                     OnPageIndexChanging="GridViewEstados_PageIndexChanging"
                                                     OnRowEditing="GridViewEstados_RowEditing"
                                                     OnRowCancelingEdit="GridViewEstados_RowCancelingEdit"
-                                                    OnRowUpdating="GridViewEstados_RowUpdating">
+                                                    OnRowUpdating="GridViewEstados_RowUpdating"
+                                                    DataKeyNames="id_Estado">
                                                     <Columns>
                                                         <asp:BoundField DataField="ID_Estado" HeaderText="ID" ReadOnly="True" />
                                                         <asp:TemplateField HeaderText="Estado">
@@ -445,8 +449,8 @@
             Error al guardar la categoría.
         </div>
         <div id="messageBoxUpdate" style="display: none; position: fixed; top: 60px; right: 20px; background-color: #4CAF50; color: white; padding: 10px; border-radius: 5px; z-index: 1000;">
-    Categoría actualizada correctamente.
-          </div>
+            Categoría actualizada correctamente.
+        </div>
         <!-- Scripts para mostrar los modales -->
         <script type="text/javascript">
             function showSuccessMessage() {
@@ -474,78 +478,147 @@
             }
         </script>
         <!-- Modales para Rol -->
-<div id="messageBoxRolSuccess" style="display: none; position: fixed; top: 60px; right: 20px; background-color: #4CAF50; color: white; padding: 10px; border-radius: 5px; z-index: 1000;">
-    Rol guardado correctamente.
-</div>
-<div id="messageBoxRolError" style="display: none; position: fixed; top: 60px; right: 20px; background-color: #eb0909; color: white; padding: 10px; border-radius: 5px; z-index: 1000;">
-    Error al guardar el rol. Verifique los datos ingresados.
-</div>
+        <div id="messageBoxRolSuccess" style="display: none; position: fixed; top: 60px; right: 20px; background-color: #4CAF50; color: white; padding: 10px; border-radius: 5px; z-index: 1000;">
+            Rol guardado correctamente.
+        </div>
+        <div id="messageBoxRolError" style="display: none; position: fixed; top: 60px; right: 20px; background-color: #eb0909; color: white; padding: 10px; border-radius: 5px; z-index: 1000;">
+            Error al guardar el rol. Verifique los datos ingresados.
+        </div>
         <div id="messageBoxRolUpdate" style="display: none; position: fixed; top: 60px; right: 20px; background-color: #4CAF50; color: white; padding: 10px; border-radius: 5px; z-index: 1000;">
-    Rol guardado correctamente.
-</div>
+            Rol guardado correctamente.
+        </div>
 
-<!-- Scripts -->
-<script type="text/javascript">
-    function showSuccessMessageRol() {
-        var messageBox = document.getElementById("messageBoxRolSuccess");
-        messageBox.style.display = "block";
-        setTimeout(function () {
-            messageBox.style.display = "none";
-        }, 3000); // Ocultar el mensaje después de 3 segundos
-    }
+        <!-- Scripts -->
+        <script type="text/javascript">
+            function showSuccessMessageRol() {
+                var messageBox = document.getElementById("messageBoxRolSuccess");
+                messageBox.style.display = "block";
+                setTimeout(function () {
+                    messageBox.style.display = "none";
+                }, 3000); // Ocultar el mensaje después de 3 segundos
+            }
 
-    function showErrorMessageRol() {
-        var messageBox = document.getElementById("messageBoxRolError");
-        messageBox.style.display = "block";
-        setTimeout(function () {
-            messageBox.style.display = "none";
-        }, 3000); // Ocultar el mensaje después de 3 segundos
-    }
+            function showErrorMessageRol() {
+                var messageBox = document.getElementById("messageBoxRolError");
+                messageBox.style.display = "block";
+                setTimeout(function () {
+                    messageBox.style.display = "none";
+                }, 3000); // Ocultar el mensaje después de 3 segundos
+            }
 
-    function showUpdateMessageRol() {
-        var messageBox = document.getElementById("messageBoxRolUpdate");
-        messageBox.style.display = "block";
-        setTimeout(function () {
-            messageBox.style.display = "none";
-        }, 3000); // Ocultar el mensaje después de 3 segundos
-    }
-</script>
+            function showUpdateMessageRol() {
+                var messageBox = document.getElementById("messageBoxRolUpdate");
+                messageBox.style.display = "block";
+                setTimeout(function () {
+                    messageBox.style.display = "none";
+                }, 3000); // Ocultar el mensaje después de 3 segundos
+            }
+        </script>
         <!-- Modales para Tipo Cliente -->
-<div id="messageBoxTipoClienteSuccess" style="display: none; position: fixed; top: 60px; right: 20px; background-color: #4CAF50; color: white; padding: 10px; border-radius: 5px; z-index: 1000;">
-    Tipo de Cliente guardado correctamente.
-</div>
-<div id="messageBoxTipoClienteError" style="display: none; position: fixed; top: 60px; right: 20px; background-color: #eb0909; color: white; padding: 10px; border-radius: 5px; z-index: 1000;">
-    Error al guardar el Tipo de Cliente. Verifique los datos ingresados.
-</div>
-<div id="messageBoxTipoClienteUpdate" style="display: none; position: fixed; top: 60px; right: 20px; background-color: #4CAF50; color: white; padding: 10px; border-radius: 5px; z-index: 1000;">
-    Tipo de Cliente actualizado correctamente.
-</div>
-<!-- Scripts -->
-<script type="text/javascript">
-    function showSuccessMessageTipoCliente() {
-        var messageBox = document.getElementById("messageBoxTipoClienteSuccess");
-        messageBox.style.display = "block";
-        setTimeout(function () {
-            messageBox.style.display = "none";
-        }, 3000); // Ocultar el mensaje después de 3 segundos
-    }
+        <div id="messageBoxTipoClienteSuccess" style="display: none; position: fixed; top: 60px; right: 20px; background-color: #4CAF50; color: white; padding: 10px; border-radius: 5px; z-index: 1000;">
+            Tipo de Cliente guardado correctamente.
+        </div>
+        <div id="messageBoxTipoClienteError" style="display: none; position: fixed; top: 60px; right: 20px; background-color: #eb0909; color: white; padding: 10px; border-radius: 5px; z-index: 1000;">
+            Error al guardar el Tipo de Cliente. Verifique los datos ingresados.
+        </div>
+        <div id="messageBoxTipoClienteUpdate" style="display: none; position: fixed; top: 60px; right: 20px; background-color: #4CAF50; color: white; padding: 10px; border-radius: 5px; z-index: 1000;">
+            Tipo de Cliente actualizado correctamente.
+        </div>
+        <!-- Scripts -->
+        <script type="text/javascript">
+            function showSuccessMessageTipoCliente() {
+                var messageBox = document.getElementById("messageBoxTipoClienteSuccess");
+                messageBox.style.display = "block";
+                setTimeout(function () {
+                    messageBox.style.display = "none";
+                }, 3000); // Ocultar el mensaje después de 3 segundos
+            }
 
-    function showErrorMessageTipoCliente() {
-        var messageBox = document.getElementById("messageBoxTipoClienteError");
-        messageBox.style.display = "block";
-        setTimeout(function () {
-            messageBox.style.display = "none";
-        }, 3000); // Ocultar el mensaje después de 3 segundos
-    }
-    function showUpdateMessageTipoCliente() {
-        var messageBox = document.getElementById("messageBoxTipoClienteUpdate");
-        messageBox.style.display = "block";
-        setTimeout(function () {
-            messageBox.style.display = "none";
-        }, 3000); // Ocultar el mensaje después de 3 segundos
-    }
-</script>
+            function showErrorMessageTipoCliente() {
+                var messageBox = document.getElementById("messageBoxTipoClienteError");
+                messageBox.style.display = "block";
+                setTimeout(function () {
+                    messageBox.style.display = "none";
+                }, 3000); // Ocultar el mensaje después de 3 segundos
+            }
+            function showUpdateMessageTipoCliente() {
+                var messageBox = document.getElementById("messageBoxTipoClienteUpdate");
+                messageBox.style.display = "block";
+                setTimeout(function () {
+                    messageBox.style.display = "none";
+                }, 3000); // Ocultar el mensaje después de 3 segundos
+            }
+        </script>
+        <!-- Modales para CasaFarmaceutica -->
+        <div id="messageBoxCasaFarmaceuticaSuccess" style="display: none; position: fixed; top: 60px; right: 20px; background-color: #4CAF50; color: white; padding: 10px; border-radius: 5px; z-index: 1000;">
+            Casa Farmaceutica guardada correctamente.
+        </div>
+        <div id="messageBoxCasaFarmaceuticaError" style="display: none; position: fixed; top: 60px; right: 20px; background-color: #eb0909; color: white; padding: 10px; border-radius: 5px; z-index: 1000;">
+            Error al guardar la Casa Farmaceutica. Verifique los datos ingresados.
+        </div>
+        <div id="messageBoxCasaFarmaceuticaUpdate" style="display: none; position: fixed; top: 60px; right: 20px; background-color: #4CAF50; color: white; padding: 10px; border-radius: 5px; z-index: 1000;">
+            Casa Farmaceutica actualizado correctamente.
+        </div>
+        <!-- Scripts -->
+        <script type="text/javascript">
+            function showSuccessMessageCasaFarmaceutica() {
+                var messageBox = document.getElementById("messageBoxCasaFarmaceuticaSuccess");
+                messageBox.style.display = "block";
+                setTimeout(function () {
+                    messageBox.style.display = "none";
+                }, 3000); // Ocultar el mensaje después de 3 segundos
+            }
 
+            function showErrorMessageCasaFarmaceutica() {
+                var messageBox = document.getElementById("messageBoxCasaFarmaceuticaError");
+                messageBox.style.display = "block";
+                setTimeout(function () {
+                    messageBox.style.display = "none";
+                }, 3000); // Ocultar el mensaje después de 3 segundos
+            }
+            function showUpdateMessageCasaFarmaceutica() {
+                var messageBox = document.getElementById("messageBoxCasaFarmaceuticaUpdate");
+                messageBox.style.display = "block";
+                setTimeout(function () {
+                    messageBox.style.display = "none";
+                }, 3000); // Ocultar el mensaje después de 3 segundos
+            }
+        </script>
+        <!-- Modales para Estado -->
+        <div id="messageBoxEstadoSuccess" style="display: none; position: fixed; top: 60px; right: 20px; background-color: #4CAF50; color: white; padding: 10px; border-radius: 5px; z-index: 1000;">
+            Estado guardado correctamente.
+        </div>
+        <div id="messageBoxEstadoError" style="display: none; position: fixed; top: 60px; right: 20px; background-color: #eb0909; color: white; padding: 10px; border-radius: 5px; z-index: 1000;">
+            Error al guardar el Estado. Verifique los datos ingresados.
+        </div>
+        <div id="messageBoxEstadoUpdate" style="display: none; position: fixed; top: 60px; right: 20px; background-color: #4CAF50; color: white; padding: 10px; border-radius: 5px; z-index: 1000;">
+            Estado actualizado correctamente.
+        </div>
+        <!-- Scripts -->
+        <script type="text/javascript">
+            function showSuccessMessageEstado() {
+                var messageBox = document.getElementById("messageBoxEstadoSuccess");
+                messageBox.style.display = "block";
+                setTimeout(function () {
+                    messageBox.style.display = "none";
+                }, 3000); // Ocultar el mensaje después de 3 segundos
+            }
+
+            function showErrorMessageEstado() {
+                var messageBox = document.getElementById("messageBoxEstadoError");
+                messageBox.style.display = "block";
+                setTimeout(function () {
+                    messageBox.style.display = "none";
+                }, 3000); // Ocultar el mensaje después de 3 segundos
+            }
+            function showUpdateMessageEstado() {
+                var messageBox = document.getElementById("messageBoxEstadoUpdate");
+                messageBox.style.display = "block";
+                setTimeout(function () {
+                    messageBox.style.display = "none";
+                }, 3000); // Ocultar el mensaje después de 3 segundos
+            }
+        </script>
 
         <!--  -->
     </div>
