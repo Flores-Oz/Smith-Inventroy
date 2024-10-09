@@ -46,8 +46,8 @@
                                     <asp:TextBox runat="server" ID="txtPassword" TextMode="Password" CssClass="form-control" />
                                 </div>
                                 <div class="mb-3">
-                                    <asp:Label runat="server" Text="Estado" AssociatedControlID="txtEstado" />
-                                    <asp:TextBox runat="server" ID="txtEstado" CssClass="form-control" />
+                                    <asp:Label runat="server" Text="Estado" AssociatedControlID="chkEstado" />
+                                    <asp:CheckBox runat="server" ID="chkEstado" CssClass="form-check-input" />
                                 </div>
                                 <div class="mb-3">
                                     <asp:Label runat="server" Text="Fecha de Creación" AssociatedControlID="txtFechaCreacion" />
@@ -68,7 +68,7 @@
                             <h2>Listado de Usuarios</h2>
                         </div>
                         <div class="card-body">
-                            <asp:GridView ID="gvUsuarios" runat="server" CssClass="table table-bordered table-striped" AutoGenerateColumns="False"
+                            <asp:GridView ID="gvUsuarios" runat="server" CssClass="table table-bordered table-striped table-responsive" AutoGenerateColumns="False"
                                 DataKeyNames="Id_Usuario"
                                 OnRowEditing="gvUsuarios_RowEditing"
                                 OnRowCancelingEdit="gvUsuarios_RowCancelingEdit"
@@ -78,10 +78,10 @@
 
                                     <asp:TemplateField HeaderText="Usuario">
                                         <ItemTemplate>
-                                            <asp:Label ID="lblUsuario" runat="server" Text='<%# Bind("Usuario") %>'></asp:Label>
+                                            <asp:Label ID="lblUsuario" runat="server" Text='<%# Bind("Usuario1") %>'></asp:Label>
                                         </ItemTemplate>
                                         <EditItemTemplate>
-                                            <asp:TextBox ID="txtUsuario" runat="server" Text='<%# Bind("Usuario") %>'></asp:TextBox>
+                                            <asp:TextBox ID="txtUsuario" runat="server" Text='<%# Bind("Usuario1") %>'></asp:TextBox>
                                         </EditItemTemplate>
                                     </asp:TemplateField>
 
@@ -99,7 +99,7 @@
                                             <asp:Label ID="lblEstado" runat="server" Text='<%# Bind("Estado") %>'></asp:Label>
                                         </ItemTemplate>
                                         <EditItemTemplate>
-                                            <asp:TextBox ID="txtEstado" runat="server" Text='<%# Bind("Estado") %>'></asp:TextBox>
+                                            <asp:CheckBox ID="chkEstadoEdit" runat="server" Checked='<%# Bind("Estado") %>' />
                                         </EditItemTemplate>
                                     </asp:TemplateField>
 
@@ -114,8 +114,8 @@
 
                                     <asp:CommandField ShowEditButton="True" ButtonType="Button" />
                                 </Columns>
-
                             </asp:GridView>
+
                         </div>
                     </div>
                 </div>
@@ -176,41 +176,73 @@
                             <h2>Listado de Personal</h2>
                         </div>
                         <div class="card-body">
-                            <asp:GridView ID="gvPersonal" runat="server" CssClass="table table-bordered table-striped" AutoGenerateColumns="False"
+                            <asp:GridView ID="gvPersonal" runat="server" CssClass="table table-bordered table-responsive table-striped" AutoGenerateColumns="False"
                                 DataKeyNames="id_Personal"
                                 OnRowEditing="gvPersonal_RowEditing"
                                 OnRowCancelingEdit="gvPersonal_RowCancelingEdit"
                                 OnRowUpdating="gvPersonal_RowUpdating">
                                 <Columns>
-                                    <asp:BoundField DataField="ID_Personal" HeaderText="ID" ReadOnly="True" />
-                                    <asp:TemplateField HeaderText="Nombre">
+                                    <asp:BoundField DataField="id_Personal" HeaderText="ID" ReadOnly="True" />
+                                    <asp:TemplateField HeaderText="Primer Nombre">
                                         <ItemTemplate>
-                                            <asp:Label ID="lblNombrePersonal" runat="server" Text='<%# Bind("Nombre") %>'></asp:Label>
+                                            <asp:Label ID="lblNombrePersonal" runat="server" Text='<%# Bind("Primer_Nombre") %>'></asp:Label>
                                         </ItemTemplate>
                                         <EditItemTemplate>
-                                            <asp:TextBox ID="txtNombrePersonal" runat="server" Text='<%# Bind("Nombre") %>'></asp:TextBox>
+                                            <asp:TextBox ID="txtNombrePersonal" runat="server" Text='<%# Bind("Primer_Nombre") %>'></asp:TextBox>
                                         </EditItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Apellido">
+                                    <asp:TemplateField HeaderText="Segundo Nombre">
                                         <ItemTemplate>
-                                            <asp:Label ID="lblApellidoPersonal" runat="server" Text='<%# Bind("Apellido") %>'></asp:Label>
+                                            <asp:Label ID="lblSegundoNombrePersonal" runat="server" Text='<%# Bind("Segundo_Nombre") %>'></asp:Label>
                                         </ItemTemplate>
                                         <EditItemTemplate>
-                                            <asp:TextBox ID="txtApellidoPersonal" runat="server" Text='<%# Bind("Apellido") %>'></asp:TextBox>
+                                            <asp:TextBox ID="txtSegundoNombrePersonal" runat="server" Text='<%# Bind("Segundo_Nombre") %>'></asp:TextBox>
                                         </EditItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Cargo">
+                                    <asp:TemplateField HeaderText="Primer Apellido">
                                         <ItemTemplate>
-                                            <asp:Label ID="lblCargo" runat="server" Text='<%# Bind("Cargo") %>'></asp:Label>
+                                            <asp:Label ID="lblApellidoPersonal" runat="server" Text='<%# Bind("Primer_Apellido") %>'></asp:Label>
                                         </ItemTemplate>
                                         <EditItemTemplate>
-                                            <asp:TextBox ID="txtCargo" runat="server" Text='<%# Bind("Cargo") %>'></asp:TextBox>
+                                            <asp:TextBox ID="txtApellidoPersonal" runat="server" Text='<%# Bind("Primer_Apellido") %>'></asp:TextBox>
+                                        </EditItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Segundo Apellido">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblSegundoApellidoPersonal" runat="server" Text='<%# Bind("Segundo_Apellido") %>'></asp:Label>
+                                        </ItemTemplate>
+                                        <EditItemTemplate>
+                                            <asp:TextBox ID="txtSegundoApellidoPersonal" runat="server" Text='<%# Bind("Segundo_Apellido") %>'></asp:TextBox>
+                                        </EditItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="DPI">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblDPI" runat="server" Text='<%# Bind("DPI") %>'></asp:Label>
+                                        </ItemTemplate>
+                                        <EditItemTemplate>
+                                            <asp:TextBox ID="txtDPI" runat="server" Text='<%# Bind("DPI") %>'></asp:TextBox>
+                                        </EditItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Dirección">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblDireccion" runat="server" Text='<%# Bind("Direccion") %>'></asp:Label>
+                                        </ItemTemplate>
+                                        <EditItemTemplate>
+                                            <asp:TextBox ID="txtDireccion" runat="server" Text='<%# Bind("Direccion") %>'></asp:TextBox>
+                                        </EditItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Teléfono">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblTelefono" runat="server" Text='<%# Bind("Telefono") %>'></asp:Label>
+                                        </ItemTemplate>
+                                        <EditItemTemplate>
+                                            <asp:TextBox ID="txtTelefono" runat="server" Text='<%# Bind("Telefono") %>'></asp:TextBox>
                                         </EditItemTemplate>
                                     </asp:TemplateField>
                                     <asp:CommandField ShowEditButton="True" ButtonType="Button" />
                                 </Columns>
-
                             </asp:GridView>
+
                         </div>
                     </div>
                 </div>
