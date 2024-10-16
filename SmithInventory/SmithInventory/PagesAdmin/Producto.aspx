@@ -70,14 +70,14 @@
                     <div class="card-header text-center color1 text-white">
                         <h2>Listado de Productos</h2>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body table-responsive">
                         <asp:GridView
                             ID="gvProducto"
                             runat="server"
                             AutoGenerateColumns="False"
                             DataKeyNames="ID_Producto"
                             AllowPaging="true" PageSize="8"
-                            CssClass="table table-striped table-bordered table-responsive"
+                            CssClass="table table-responsive table-striped table-bordered"
                             OnRowEditing="gvProducto_RowEditing"
                             OnPageIndexChanging="gvProducto_PageIndexChanging"
                             OnRowCancelingEdit="gvProducto_RowCancelingEdit"

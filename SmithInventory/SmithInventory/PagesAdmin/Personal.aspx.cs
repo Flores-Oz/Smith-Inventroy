@@ -37,6 +37,47 @@ namespace SmithInventory.PagesAdmin
 
         protected void ButtonGuardarUser_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtUsuario.Text) ||
+            string.IsNullOrWhiteSpace(txtPassword.Text))
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showErrorMessageProducto();", true);
+                return;
+            }
+            else
+            {
+                try
+                {
+                    // Recuperar los valores ingresados
+                    string nombreUsuario = txtUsuario.Text;
+                    string password = txtPassword.Text;
+                    bool estado = chkEstado.Checked;
+
+                    // Crear un nuevo objeto de Usuario de la clase correspondiente
+                    SmithInventory.DB.Usuario nuevoUsuario = new SmithInventory.DB.Usuario
+                    {
+                        Usuario1 = nombreUsuario,
+                        Password = password,
+                        Estado = estado,
+                        Fecha_Creacion = DateTime.Now
+                    };
+
+                    // Usar el contexto para insertar el nuevo usuario en la base de datos
+                    using (var contexto = new DCSmithDataContext(Global.CADENA))
+                    {
+                        contexto.Usuario.InsertOnSubmit(nuevoUsuario);
+                        contexto.SubmitChanges();
+                    }
+
+                    // Mostrar mensaje de éxito y refrescar la lista de usuarios
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showSuccessMessageUsuario();", true);
+                    CargarUsuario(); // Método que refresca la lista de usuarios
+                }
+                catch (Exception ex)
+                {
+                    // Mostrar mensaje de error si algo sale mal
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showErrorMessageUsuario();", true);
+                }
+            }
 
         }
 
@@ -80,22 +121,26 @@ namespace SmithInventory.PagesAdmin
 
         protected void gvUsuarios_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
-
+            gvUsuarios.EditIndex = -1;
+            CargarUsuario(); 
         }
 
         protected void gvUsuarios_RowEditing(object sender, GridViewEditEventArgs e)
         {
-
+            gvUsuarios.EditIndex = e.NewEditIndex;
+            CargarUsuario();
         }
 
         protected void gvPersonal_RowEditing(object sender, GridViewEditEventArgs e)
         {
-
+            gvPersonal.EditIndex = e.NewEditIndex;
+            CargarPersonal();
         }
 
         protected void gvPersonal_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
-
+            gvPersonal.EditIndex = -1;
+            CargarPersonal();
         }
 
         protected void gvPersonal_RowUpdating(object sender, GridViewUpdateEventArgs e)

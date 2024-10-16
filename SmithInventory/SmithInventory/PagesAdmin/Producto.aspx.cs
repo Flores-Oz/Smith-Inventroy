@@ -13,7 +13,7 @@ namespace SmithInventory.PagesAdmin
         DB.DCSmithDataContext conn = new DB.DCSmithDataContext(Global.CADENA);
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
                 CargarProductos();
                 CargarCategorias();
@@ -31,7 +31,7 @@ namespace SmithInventory.PagesAdmin
         public void CargarCategorias()
         {
             var Cate = from cat in conn.Categoria
-                       select new 
+                       select new
                        {
                            id_categoria = cat.ID_Categoria,
                            categoria = cat.Nombre_Categoria
@@ -69,7 +69,7 @@ namespace SmithInventory.PagesAdmin
 
             string nuevoNombre = txtNombreProducto.Text;
             decimal nuevoPrecio = Convert.ToDecimal(txtPrecio.Text);
-            int nuevoPrecioCosto = Convert.ToInt32(txtStock.Text);
+            decimal nuevoPrecioCosto = Convert.ToDecimal(txtStock.Text);
             bool nuevoEstado = chkEstadoEdit.Checked;
 
             // Aquí puedes actualizar el producto en la base de datos
@@ -85,7 +85,7 @@ namespace SmithInventory.PagesAdmin
                     contexto.SubmitChanges();
                 }
             }
-
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showUpdateMessageProducto();", true);
             gvProducto.EditIndex = -1;
             CargarProductos();
 
@@ -108,40 +108,43 @@ namespace SmithInventory.PagesAdmin
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showErrorMessageProducto();", true);
                 return;
             }
-
-            try
+            else
             {
-                // Recuperar los valores ingresados
-                string nombreProducto = txtNombreProducto.Text;
-                decimal precioCosto = Convert.ToDecimal(txtPrecioCosto.Text);
-                decimal precioVenta = Convert.ToDecimal(txtPrecioVenta.Text);
-                int idCategoria = Convert.ToInt32(ddlCategoria.SelectedValue);
-                bool estado = chkEstado.Checked;
 
-                // Crear un nuevo objeto de Producto de la clase correcta
-                SmithInventory.DB.Producto nuevoProducto = new SmithInventory.DB.Producto
+                try
                 {
-                    Nombre_Producto = nombreProducto,
-                    Precio_Costo = precioCosto,
-                    Precio_Venta = precioVenta,
-                    ID_Categoria = idCategoria,
-                    Estado = estado
-                };
+                    // Recuperar los valores ingresados
+                    string nombreProducto = txtNombreProducto.Text;
+                    decimal precioCosto = Convert.ToDecimal(txtPrecioCosto.Text);
+                    decimal precioVenta = Convert.ToDecimal(txtPrecioVenta.Text);
+                    int idCategoria = Convert.ToInt32(ddlCategoria.SelectedValue);
+                    bool estado = chkEstado.Checked;
 
-                using (var contexto = new DCSmithDataContext(Global.CADENA))
-                {
-                    contexto.Producto.InsertOnSubmit(nuevoProducto);
-                    contexto.SubmitChanges();
+                    // Crear un nuevo objeto de Producto de la clase correcta
+                    SmithInventory.DB.Producto nuevoProducto = new SmithInventory.DB.Producto
+                    {
+                        Nombre_Producto = nombreProducto,
+                        Precio_Costo = precioCosto,
+                        Precio_Venta = precioVenta,
+                        ID_Categoria = idCategoria,
+                        Estado = estado
+                    };
+
+                    using (var contexto = new DCSmithDataContext(Global.CADENA))
+                    {
+                        contexto.Producto.InsertOnSubmit(nuevoProducto);
+                        contexto.SubmitChanges();
+                    }
+
+                    // Mostrar mensaje de éxito y refrescar la lista
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showSuccessMessageProducto();", true);
+                    CargarProductos();
                 }
-
-                // Mostrar mensaje de éxito y refrescar la lista
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showSuccessMessageProducto();", true);
-                CargarProductos();
-            }
-            catch (Exception ex)
-            {
-                // Mostrar mensaje de error si algo sale mal
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showErrorMessageProducto();", true);
+                catch (Exception ex)
+                {
+                    // Mostrar mensaje de error si algo sale mal
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showErrorMessageProducto();", true);
+                }
             }
         }
 

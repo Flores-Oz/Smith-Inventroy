@@ -248,7 +248,79 @@
                 </div>
             </div>
         </div>
+        <!-- MODALES -->
+        <!-- Usuario -->
+        <div id="messageBoxSuccessUser" style="display: none; position: fixed; top: 60px; right: 20px; background-color: #4CAF50; color: white; padding: 10px; border-radius: 5px; z-index: 1000;">
+            Usuario Creado correctamente.
+        </div>
+        <div id="messageBoxErrorUser" style="display: none; position: fixed; top: 60px; right: 20px; background-color: #eb0909; color: white; padding: 10px; border-radius: 5px; z-index: 1000;">
+            Error al crear el Usuario.
+        </div>
+        <div id="messageBoxUpdateUser" style="display: none; position: fixed; top: 60px; right: 20px; background-color: #4CAF50; color: white; padding: 10px; border-radius: 5px; z-index: 1000;">
+            Usuario actualizado correctamente.
+        </div>
+        <!-- Scripts para mostrar los modales -->
+        <script type="text/javascript">
+            function showSuccessMessageProducto() {
+                var messageBox = document.getElementById("messageBoxSuccessUser");
+                messageBox.style.display = "block";
+                setTimeout(function () {
+                    messageBox.style.display = "none";
+                }, 3000); // Ocultar el mensaje después de 3 segundos
+            }
 
+            function showErrorMessageProducto() {
+                var messageBox = document.getElementById("messageBoxErrorUser");
+                messageBox.style.display = "block";
+                setTimeout(function () {
+                    messageBox.style.display = "none";
+                }, 3000); // Ocultar el mensaje después de 3 segundos
+            }
+
+            function showUpdateMessageProducto() {
+                var messageBox = document.getElementById("messageBoxUpdateUser");
+                messageBox.style.display = "block";
+                setTimeout(function () {
+                    messageBox.style.display = "none";
+                }, 3000); // Ocultar el mensaje después de 3 segundos
+            }
+        </script>
+        <!-- Personal -->
+        <div id="messageBoxSuccessPersonal" style="display: none; position: fixed; top: 60px; right: 20px; background-color: #4CAF50; color: white; padding: 10px; border-radius: 5px; z-index: 1000;">
+            Personal Creado correctamente.
+        </div>
+        <div id="messageBoxErrorPersonal" style="display: none; position: fixed; top: 60px; right: 20px; background-color: #eb0909; color: white; padding: 10px; border-radius: 5px; z-index: 1000;">
+            Error al crear al Personal.
+        </div>
+        <div id="messageBoxUpdatePersonal" style="display: none; position: fixed; top: 60px; right: 20px; background-color: #4CAF50; color: white; padding: 10px; border-radius: 5px; z-index: 1000;">
+            Personal actualizado correctamente.
+        </div>
+        <!-- Scripts para mostrar los modales -->
+        <script type="text/javascript">
+            function showSuccessMessageProducto() {
+                var messageBox = document.getElementById("messageBoxSuccessPersonal");
+                messageBox.style.display = "block";
+                setTimeout(function () {
+                    messageBox.style.display = "none";
+                }, 3000); // Ocultar el mensaje después de 3 segundos
+            }
+
+            function showErrorMessageProducto() {
+                var messageBox = document.getElementById("messageBoxErrorPersonal");
+                messageBox.style.display = "block";
+                setTimeout(function () {
+                    messageBox.style.display = "none";
+                }, 3000); // Ocultar el mensaje después de 3 segundos
+            }
+
+            function showUpdateMessageProducto() {
+                var messageBox = document.getElementById("messageBoxUpdatePersonal");
+                messageBox.style.display = "block";
+                setTimeout(function () {
+                    messageBox.style.display = "none";
+                }, 3000); // Ocultar el mensaje después de 3 segundos
+            }
+        </script>
         <!-- -->
     </div>
 </asp:Content>
