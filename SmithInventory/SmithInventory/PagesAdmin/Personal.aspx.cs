@@ -40,7 +40,7 @@ namespace SmithInventory.PagesAdmin
             if (string.IsNullOrWhiteSpace(txtUsuario.Text) ||
             string.IsNullOrWhiteSpace(txtPassword.Text))
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showErrorMessageProducto();", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showErrorMessageUser();", true);
                 return;
             }
             else
@@ -83,7 +83,56 @@ namespace SmithInventory.PagesAdmin
 
         protected void ButtonGuardarPersonal_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtDPI.Text) ||
+            string.IsNullOrWhiteSpace(txtPrimerNombre.Text) ||
+                    string.IsNullOrWhiteSpace(txtSegundoNombre.Text) ||
+                string.IsNullOrWhiteSpace(txtPrimerApellido.Text) ||
+                string.IsNullOrWhiteSpace(txtSegundoApellido.Text) ||
+                    string.IsNullOrWhiteSpace(txtDireccion.Text) ||
+                string.IsNullOrWhiteSpace(txtTelefono.Text))
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showErrorMessagePersonal();", true);
+                return;
+            }
+            else
+            {
+                try
+                {
+                    // Recuperar los valores ingresados
+                    string dpi = txtDPI.Text;
+                    string pNombre = txtPrimerNombre.Text;
+                    string sNombre = txtSegundoNombre.Text;
+                    string pApellido = txtPrimerApellido.Text;
+                    string sApellido = txtSegundoApellido.Text;
+                    string direccion = txtDireccion.Text;
+                    string telefono = txtTelefono.Text;
 
+                    SmithInventory.DB.Personal nuevoPersonal = new SmithInventory.DB.Personal{ 
+                              DPI = dpi,
+                              Primer_Nombre = pNombre,
+                              Segundo_Nombre = sNombre,
+                              Primer_Apellido = pApellido,
+                              Segundo_Apellido = sApellido,
+                              Direccion = direccion,
+                              Telefono = telefono
+                    };
+                    // Usar el contexto para insertar el nuevo usuario en la base de datos
+                    using (var contexto = new DCSmithDataContext(Global.CADENA))
+                    {
+                        contexto.Personal.InsertOnSubmit(nuevoPersonal);
+                        contexto.SubmitChanges();
+                    }
+
+                    // Mostrar mensaje de éxito y refrescar la lista de usuarios
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showSuccessMessagePersonal();", true);
+                    CargarPersonal(); // Método que refresca la lista de usuarios
+                }
+                catch (Exception ex)
+                {
+                    // Mostrar mensaje de error si algo sale mal
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showErrorMessagePersonal();", true);
+                }
+            }
         }
 
         protected void gvUsuarios_RowUpdating(object sender, GridViewUpdateEventArgs e)
@@ -148,7 +197,6 @@ namespace SmithInventory.PagesAdmin
             int idPersonal = Convert.ToInt32(gvPersonal.DataKeys[e.RowIndex].Value);
 
             GridViewRow fila = gvPersonal.Rows[e.RowIndex];
-
             // Obtener los valores ingresados en los campos de la fila seleccionada
             TextBox txtNombrePersonal = (TextBox)fila.FindControl("txtNombrePersonal");
             TextBox txtSegundoNombre = (TextBox)fila.FindControl("txtSegundoNombre");
