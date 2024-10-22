@@ -26,12 +26,22 @@ namespace SmithInventory.PagesAdmin
             gvPersonal.DataSource = per;
             gvPersonal.DataBind();
         }
+        public void CargarRoles()
+        {
+            var rol = from r in conn.Rol
+                      select r;
+            ddlRoles.DataSource = rol;
+            ddlRoles.DataTextField = "Descripcion";   
+            ddlRoles.DataValueField = "Permiso"; 
+            ddlRoles.DataBind();
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 CargarPersonal();
                 CargarUsuario();
+                CargarRoles();
             }
         }
 
@@ -51,6 +61,7 @@ namespace SmithInventory.PagesAdmin
                     string nombreUsuario = txtUsuario.Text;
                     string password = txtPassword.Text;
                     bool estado = chkEstado.Checked;
+                    int rol = Convert.ToInt32(ddlRoles.SelectedValue);
 
                     // Crear un nuevo objeto de Usuario de la clase correspondiente
                     SmithInventory.DB.Usuario nuevoUsuario = new SmithInventory.DB.Usuario
@@ -58,6 +69,7 @@ namespace SmithInventory.PagesAdmin
                         Usuario1 = nombreUsuario,
                         Password = password,
                         Estado = estado,
+                        id_Rol = rol,
                         Fecha_Creacion = DateTime.Now
                     };
 
@@ -99,6 +111,7 @@ namespace SmithInventory.PagesAdmin
                 try
                 {
                     // Recuperar los valores ingresados
+                    int idUsuario = Convert.ToInt32(txtIDPersonal.Text);
                     string dpi = txtDPI.Text;
                     string pNombre = txtPrimerNombre.Text;
                     string sNombre = txtSegundoNombre.Text;
@@ -108,6 +121,7 @@ namespace SmithInventory.PagesAdmin
                     string telefono = txtTelefono.Text;
 
                     SmithInventory.DB.Personal nuevoPersonal = new SmithInventory.DB.Personal{ 
+                              id_Usuario = idUsuario,
                               DPI = dpi,
                               Primer_Nombre = pNombre,
                               Segundo_Nombre = sNombre,
@@ -163,7 +177,7 @@ namespace SmithInventory.PagesAdmin
                     contexto.SubmitChanges();
                 }
             }
-
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showUpdateMessageUsuario();", true);
             gvUsuarios.EditIndex = -1;
             CargarUsuario();
         }
@@ -199,9 +213,9 @@ namespace SmithInventory.PagesAdmin
             GridViewRow fila = gvPersonal.Rows[e.RowIndex];
             // Obtener los valores ingresados en los campos de la fila seleccionada
             TextBox txtNombrePersonal = (TextBox)fila.FindControl("txtNombrePersonal");
-            TextBox txtSegundoNombre = (TextBox)fila.FindControl("txtSegundoNombre");
+            TextBox txtSegundoNombre = (TextBox)fila.FindControl("txtSegundoNombrePersonal");
             TextBox txtApellidoPersonal = (TextBox)fila.FindControl("txtApellidoPersonal");
-            TextBox txtSegundoApellido = (TextBox)fila.FindControl("txtSegundoApellido");
+            TextBox txtSegundoApellido = (TextBox)fila.FindControl("txtSegundoApellidoPersonal");
             TextBox txtDPI = (TextBox)fila.FindControl("txtDPI");
             TextBox txtDireccion = (TextBox)fila.FindControl("txtDireccion");
             TextBox txtTelefono = (TextBox)fila.FindControl("txtTelefono");
@@ -232,7 +246,7 @@ namespace SmithInventory.PagesAdmin
                     contexto.SubmitChanges();
                 }
             }
-
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showUpdateMessagePersonal();", true);
             // Cancelar el modo de edición y recargar la lista de personal
             gvPersonal.EditIndex = -1;
             CargarPersonal();

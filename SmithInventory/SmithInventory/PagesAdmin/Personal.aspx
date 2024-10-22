@@ -30,7 +30,7 @@
                         <div class="card-header text-center color1 text-white">
                             <h2>Registro de Usuario</h2>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body table-responsive">
                             <div class="container">
                                 <!-- Campos del formulario para la tabla Usuario -->
                                 <div class="mb-3">
@@ -50,8 +50,8 @@
                                     <asp:CheckBox runat="server" ID="chkEstado" CssClass="form-check-input" />
                                 </div>
                                 <div class="mb-3">
-                                    <asp:Label runat="server" Text="Fecha de Creación" AssociatedControlID="txtFechaCreacion" />
-                                    <asp:TextBox runat="server" ID="txtFechaCreacion" CssClass="form-control" Enabled="false" />
+                                    <asp:Label runat="server" Text="Rol" AssociatedControlID="ddlRoles" />
+                                    <asp:DropDownList runat="server" ID="ddlRoles" CssClass="form-control"></asp:DropDownList>
                                 </div>
                                 <div class="text-center">
                                     <asp:Button ID="ButtonGuardarUser" runat="server" Text="Guardar Usuario" CssClass="btn btn-primary" OnClick="ButtonGuardarUser_Click" />
@@ -67,7 +67,7 @@
                         <div class="card-header text-center color1 text-white">
                             <h2>Listado de Usuarios</h2>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body table-responsive">
                             <asp:GridView ID="gvUsuarios" runat="server" CssClass="table table-bordered table-striped table-responsive" AutoGenerateColumns="False"
                                 DataKeyNames="Id_Usuario"
                                 OnRowEditing="gvUsuarios_RowEditing"
@@ -103,6 +103,17 @@
                                         </EditItemTemplate>
                                     </asp:TemplateField>
 
+                                    <asp:TemplateField HeaderText="Rol">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblRol" runat="server" Text='<%# Bind("id_Rol") %>'></asp:Label>
+                                        </ItemTemplate>
+                                        <EditItemTemplate>
+                                            <asp:DropDownList ID="ddlRolEdit" runat="server" DataTextField="Roles" DataValueField="id_Rol"
+                                                SelectedValue='<%# Bind("id_Rol") %>'>
+                                            </asp:DropDownList>
+                                        </EditItemTemplate>
+                                    </asp:TemplateField>
+
                                     <asp:TemplateField HeaderText="Fecha Creacion">
                                         <ItemTemplate>
                                             <asp:Label ID="lblFechaCreacion" runat="server" Text='<%# Bind("Fecha_Creacion", "{0:yyyy-MM-dd}") %>'></asp:Label>
@@ -131,11 +142,11 @@
                         <div class="card-body">
                             <!-- Campos del formulario para la tabla Personal -->
                             <div class="mb-3">
-                                <asp:Label runat="server" Text="ID Personal" AssociatedControlID="txtIDPersonal" />
-                                <asp:TextBox runat="server" ID="txtIDPersonal" CssClass="form-control" Enabled="false" />
+                                <asp:Label runat="server" Text="ID Usuario" AssociatedControlID="txtIDPersonal" />
+                                <asp:TextBox runat="server" ID="txtIDPersonal" CssClass="form-control" Enabled="true" />
                             </div>
                             <div class="mb-3">
-                                <asp:Label runat="server" Text="DPI" AssociatedControlID="txtDPI" />
+                                <asp:Label runat="server" Text="DPI (Sin Espacios)" AssociatedControlID="txtDPI" />
                                 <asp:TextBox runat="server" ID="txtDPI" CssClass="form-control" />
                             </div>
                             <div class="mb-3">
@@ -175,7 +186,7 @@
                         <div class="card-header text-center color1 text-white">
                             <h2>Listado de Personal</h2>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body table-responsive">
                             <asp:GridView ID="gvPersonal" runat="server" CssClass="table table-bordered table-responsive table-striped" AutoGenerateColumns="False"
                                 DataKeyNames="id_Personal"
                                 OnRowEditing="gvPersonal_RowEditing"
@@ -261,7 +272,7 @@
         </div>
         <!-- Scripts para mostrar los modales -->
         <script type="text/javascript">
-            function showSuccessMessageProducto() {
+            function showSuccessMessageUsuario() {
                 var messageBox = document.getElementById("messageBoxSuccessUser");
                 messageBox.style.display = "block";
                 setTimeout(function () {
@@ -269,7 +280,7 @@
                 }, 3000); // Ocultar el mensaje después de 3 segundos
             }
 
-            function showErrorMessageProducto() {
+            function showErrorMessageUsuario() {
                 var messageBox = document.getElementById("messageBoxErrorUser");
                 messageBox.style.display = "block";
                 setTimeout(function () {
@@ -277,8 +288,8 @@
                 }, 3000); // Ocultar el mensaje después de 3 segundos
             }
 
-            function showUpdateMessageProducto() {
-                var messageBox = document.getElementById("messageBoxUpdateUser");
+            function showUpdateMessageUsuario() {
+                var messageBox = document.getlementById("messageBoxUpdateUser");
                 messageBox.style.display = "block";
                 setTimeout(function () {
                     messageBox.style.display = "none";
@@ -297,7 +308,7 @@
         </div>
         <!-- Scripts para mostrar los modales -->
         <script type="text/javascript">
-            function showSuccessMessageProducto() {
+            function showSuccessMessagePersonal() {
                 var messageBox = document.getElementById("messageBoxSuccessPersonal");
                 messageBox.style.display = "block";
                 setTimeout(function () {
@@ -305,7 +316,7 @@
                 }, 3000); // Ocultar el mensaje después de 3 segundos
             }
 
-            function showErrorMessageProducto() {
+            function showErrorMessagePersonal() {
                 var messageBox = document.getElementById("messageBoxErrorPersonal");
                 messageBox.style.display = "block";
                 setTimeout(function () {
@@ -313,7 +324,7 @@
                 }, 3000); // Ocultar el mensaje después de 3 segundos
             }
 
-            function showUpdateMessageProducto() {
+            function showUpdateMessagePersonal() {
                 var messageBox = document.getElementById("messageBoxUpdatePersonal");
                 messageBox.style.display = "block";
                 setTimeout(function () {

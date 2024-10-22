@@ -78,20 +78,6 @@
       <Association Name="Usuario_Lote_Ingreso" Member="Usuario" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Usuario" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Personal" Member="Personal">
-    <Type Name="Personal">
-      <Column Name="id_Personal" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="DPI" Type="System.String" DbType="NVarChar(13) NOT NULL" CanBeNull="false" />
-      <Column Name="Primer_Nombre" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Segundo_Nombre" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Primer_Apellido" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Segundo_Apellido" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Direccion" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Telefono" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
-      <Column Name="id_Usuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Usuario_Personal" Member="Usuario" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Usuario" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Producto" Member="Producto">
     <Type Name="Producto">
       <Column Name="ID_Producto" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -120,21 +106,6 @@
       <Association Name="Tipo_Cliente_Cliente" Member="Cliente" ThisKey="id_Tipo" OtherKey="id_Tipo" Type="Cliente" />
     </Type>
   </Table>
-  <Table Name="dbo.Usuario" Member="Usuario">
-    <Type Name="Usuario">
-      <Column Name="id_Usuario" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="id_Rol" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Usuario" Member="Usuario1" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Password" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="Estado" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="Fecha_Creacion" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="Fecha_Desactivacion" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Association Name="Usuario_Lote_Ingreso" Member="Lote_Ingreso" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Lote_Ingreso" />
-      <Association Name="Usuario_Personal" Member="Personal" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Personal" />
-      <Association Name="Usuario_Venta" Member="Venta" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Venta" />
-      <Association Name="Rol_Usuario" Member="Rol" ThisKey="id_Rol" OtherKey="id_Rol" Type="Rol" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Venta" Member="Venta">
     <Type Name="Venta">
       <Column Name="id_Venta" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -147,6 +118,35 @@
       <Association Name="Venta_Detalles_Venta" Member="Detalles_Venta" ThisKey="id_Venta" OtherKey="id_Venta" Type="Detalles_Venta" />
       <Association Name="Estados_Venta" Member="Estados" ThisKey="id_Estado" OtherKey="id_Estado" Type="Estados" IsForeignKey="true" />
       <Association Name="Usuario_Venta" Member="Usuario" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Usuario" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Usuario" Member="Usuario">
+    <Type Name="Usuario">
+      <Column Name="id_Usuario" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_Rol" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Usuario" Member="Usuario1" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Estado" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Fecha_Creacion" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Fecha_Desactivacion" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Usuario_Lote_Ingreso" Member="Lote_Ingreso" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Lote_Ingreso" />
+      <Association Name="Usuario_Venta" Member="Venta" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Venta" />
+      <Association Name="Usuario_Personal" Member="Personal" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Personal" />
+      <Association Name="Rol_Usuario" Member="Rol" ThisKey="id_Rol" OtherKey="id_Rol" Type="Rol" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Personal" Member="Personal">
+    <Type Name="Personal">
+      <Column Name="id_Personal" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DPI" Type="System.String" DbType="NVarChar(13) NOT NULL" CanBeNull="false" />
+      <Column Name="Primer_Nombre" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Segundo_Nombre" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Primer_Apellido" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Segundo_Apellido" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Direccion" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Telefono" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="id_Usuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Usuario_Personal" Member="Usuario" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Usuario" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
