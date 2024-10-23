@@ -52,6 +52,14 @@ namespace SmithInventory.PagesAdmin
             DropDownListCasaFarma.DataValueField = "codigo";
             DropDownListCasaFarma.DataBind();
         }
+        public void Limpiar()
+        {
+            txtCantidadLote.Text = string.Empty;
+            txtPrecioLote.Text = string.Empty;
+            txtDescuentoLote.Text = string.Empty;
+            txtSubtotalLote.Text = string.Empty;
+            txtFechaCaducidadLote.Text = string.Empty;
+        }
 
         protected void btnAgregarProductoLote_Click(object sender, EventArgs e)
         {
@@ -66,7 +74,7 @@ namespace SmithInventory.PagesAdmin
             {
                 dtProductos.Columns.Add("ProductoID", typeof(int)); // Asegúrate de agregar esta columna
                 dtProductos.Columns.Add("Producto");
-                dtProductos.Columns.Add("Cantidad");
+                dtProductos.Columns.Add("Cantidad", typeof(int));
                 dtProductos.Columns.Add("Precio");
                 dtProductos.Columns.Add("Descuento");
                 dtProductos.Columns.Add("Subtotal");
@@ -92,6 +100,8 @@ namespace SmithInventory.PagesAdmin
             // Actualizar el total del lote
             totalLote += Convert.ToDecimal(txtSubtotalLote.Text);
             txtTotalLote.Text = totalLote.ToString("F2");
+            CalcularTotalLote();
+            Limpiar();
         }
 
         protected void ddlProductoLote_TextChanged(object sender, EventArgs e)
@@ -254,31 +264,38 @@ namespace SmithInventory.PagesAdmin
             {
                 foreach (GridViewRow fila in gvProductosLote.Rows)
                 {
-                    // Obtener los valores de cada fila del GridView
-                    int idProducto = Convert.ToInt32(gvProductosLote.DataKeys[fila.RowIndex].Value);
-                    int cantidad = Convert.ToInt32((fila.FindControl("txtCantidad") as TextBox).Text);
-                    decimal precio = Convert.ToDecimal((fila.FindControl("txtPrecio") as TextBox).Text);
-                    decimal subtotal = cantidad * precio;
+                    // Obtener los controles de la fila
+                    TextBox txtCantidad = fila.FindControl("txtCantidad") as TextBox;
+                    TextBox txtPrecio = fila.FindControl("txtPrecio") as TextBox;
+                    TextBox txtFechaCaducidad = fila.FindControl("txtFechaCaducidad") as TextBox;
+                    TextBox txtDescuento = fila.FindControl("txtDescuento") as TextBox;
 
-                    DateTime fechaCaducidad = Convert.ToDateTime((fila.FindControl("txtFechaCaducidad") as TextBox).Text);
-                    int? descuento = string.IsNullOrEmpty((fila.FindControl("txtDescuento") as TextBox).Text)
-                                    ? (int?)null
-                                    : Convert.ToInt32((fila.FindControl("txtDescuento") as TextBox).Text);
-
-                    // Crear el objeto del detalle del lote
-                    var nuevoDetalleLote = new Detalle_Lote_Ingreso
+                    // Verificar si los controles no son nulos
+                    if (txtCantidad != null && txtPrecio != null && txtFechaCaducidad != null)
                     {
-                        id_Lote = idLote, // Usar el ID del lote generado
-                        ID_Producto = idProducto,
-                        Cantidad = cantidad,
-                        Precio = precio,
-                        SubTotal = subtotal,
-                        Fecha_Caducida = fechaCaducidad,
-                        Descuento = descuento
-                    };
+                        // Obtener los valores de cada fila del GridView
+                        int idProducto = Convert.ToInt32(gvProductosLote.DataKeys[fila.RowIndex].Value);
+                        int cantidad = Convert.ToInt32(txtCantidad.Text);
+                        decimal precio = Convert.ToDecimal(txtPrecio.Text);
+                        decimal subtotal = cantidad * precio;
+                        DateTime fechaCaducidad = Convert.ToDateTime(txtFechaCaducidad.Text);
+                        int? descuento = string.IsNullOrEmpty(txtDescuento.Text) ? (int?)null : Convert.ToInt32(txtDescuento.Text);
 
-                    // Insertar el detalle en la base de datos
-                    db.Detalle_Lote_Ingreso.InsertOnSubmit(nuevoDetalleLote);
+                        // Crear el objeto del detalle del lote
+                        var nuevoDetalleLote = new Detalle_Lote_Ingreso
+                        {
+                            id_Lote = idLote,
+                            ID_Producto = idProducto,
+                            Cantidad = cantidad,
+                            Precio = precio,
+                            SubTotal = subtotal,
+                            Fecha_Caducida = fechaCaducidad,
+                            Descuento = descuento
+                        };
+
+                        // Insertar el detalle en la base de datos
+                        db.Detalle_Lote_Ingreso.InsertOnSubmit(nuevoDetalleLote);
+                    }
                 }
 
                 // Guardar los cambios en la base de datos
@@ -286,12 +303,10 @@ namespace SmithInventory.PagesAdmin
 
                 // Mensaje de éxito
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showSuccessMessageDetLote();", true);
-                //lblMensaje.Text = "Detalles del lote guardados exitosamente.";
             }
             catch (Exception ex)
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showErrorMessageDetLote();", true);
-                //lblMensaje.Text = "Ocurrió un error al guardar los detalles del lote: " + ex.Message;
             }
         }
 

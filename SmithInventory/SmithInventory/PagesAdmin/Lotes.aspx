@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/SiteAdmin.Master" AutoEventWireup="true" CodeBehind="Lotes.aspx.cs" Inherits="SmithInventory.PagesAdmin.Lotes" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 
@@ -59,11 +60,16 @@
                                 <td>
                                     <asp:DropDownList ID="ddlProductoLote" runat="server" AutoPostBack="true" OnTextChanged="ddlProductoLote_TextChanged" CssClass="form-control"></asp:DropDownList>
                                 </td>
-                                <td><asp:TextBox ID="txtCantidadLote" AutoPostBack="true" OnTextChanged="txtCantidadLote_TextChanged" runat="server" CssClass="form-control"></asp:TextBox></td>
-                                <td><asp:TextBox ID="txtPrecioLote" runat="server" Enabled="false" CssClass="form-control" ReadOnly="true"></asp:TextBox></td>
-                                <td><asp:TextBox ID="txtDescuentoLote" AutoPostBack="true" OnTextChanged="txtDescuentoLote_TextChanged" runat="server" CssClass="form-control"></asp:TextBox></td>
-                                <td><asp:TextBox ID="txtSubtotalLote" runat="server" Enabled="false" CssClass="form-control" OnTextChanged="txtSubtotalLote_TextChanged" ReadOnly="true"></asp:TextBox></td>
-                                <td><asp:TextBox ID="txtFechaCaducidadLote" runat="server" CssClass="form-control" Type="date"></asp:TextBox></td>
+                                <td>
+                                    <asp:TextBox ID="txtCantidadLote" AutoPostBack="true" OnTextChanged="txtCantidadLote_TextChanged" runat="server" CssClass="form-control"></asp:TextBox></td>
+                                <td>
+                                    <asp:TextBox ID="txtPrecioLote" runat="server" Enabled="false" CssClass="form-control" ReadOnly="true"></asp:TextBox></td>
+                                <td>
+                                    <asp:TextBox ID="txtDescuentoLote" AutoPostBack="true" OnTextChanged="txtDescuentoLote_TextChanged" runat="server" CssClass="form-control"></asp:TextBox></td>
+                                <td>
+                                    <asp:TextBox ID="txtSubtotalLote" runat="server" Enabled="false" CssClass="form-control" OnTextChanged="txtSubtotalLote_TextChanged" ReadOnly="true"></asp:TextBox></td>
+                                <td>
+                                    <asp:TextBox ID="txtFechaCaducidadLote" runat="server" CssClass="form-control" Type="date"></asp:TextBox></td>
                                 <td>
                                     <asp:Button ID="btnAgregarProductoLote" OnClick="btnAgregarProductoLote_Click" runat="server" CssClass="btn btn-success" Text="Agregar" />
                                 </td>
@@ -79,14 +85,35 @@
                     <Columns>
                         <asp:BoundField DataField="ProductoID" HeaderText="ID Producto" />
                         <asp:BoundField DataField="Producto" HeaderText="Producto" />
-                        <asp:BoundField DataField="Cantidad" HeaderText="Cantidad" />
-                        <asp:BoundField DataField="Precio" HeaderText="Precio" />
-                        <asp:BoundField DataField="Descuento" HeaderText="Descuento" />
+                        <asp:TemplateField HeaderText="Cantidad">
+                            <ItemTemplate>
+                                <asp:TextBox ID="txtCantidad" runat="server" Text='<%# Eval("Cantidad") %>' CssClass="form-control"></asp:TextBox>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+
+                        <asp:TemplateField HeaderText="Precio">
+                            <ItemTemplate>
+                                <asp:TextBox ID="txtPrecio" runat="server" Text='<%# Eval("Precio") %>' CssClass="form-control"></asp:TextBox>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+
+                        <asp:TemplateField HeaderText="Descuento">
+                            <ItemTemplate>
+                                <asp:TextBox ID="txtDescuento" runat="server" Text='<%# Eval("Descuento") %>' CssClass="form-control"></asp:TextBox>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+
+                        <asp:TemplateField HeaderText="Fecha de Caducidad">
+                            <ItemTemplate>
+                                <asp:TextBox ID="txtFechaCaducidad" runat="server" Text='<%# Eval("FechaCaducidad", "{0:yyyy-MM-dd}") %>' CssClass="form-control"></asp:TextBox>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+
                         <asp:BoundField DataField="Subtotal" HeaderText="Subtotal" />
-                        <asp:BoundField DataField="FechaCaducidad" HeaderText="Fecha de Caducidad" />
+
                         <asp:TemplateField HeaderText="Acciones">
                             <ItemTemplate>
-                                   <asp:Button runat="server" ID="btnEliminarProducto" Text="Eliminar" CssClass="btn btn-danger" CommandName="Eliminar" CommandArgument='<%# Eval("ProductoID") %>' />
+                                <asp:Button runat="server" ID="btnEliminarProducto" Text="Eliminar" CssClass="btn btn-danger" CommandName="Eliminar" CommandArgument='<%# Eval("ProductoID") %>' />
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
@@ -98,56 +125,56 @@
             </div>
         </div>
     </div>
-     <!-- Modales -->
- <div id="messageBoxSuccessLote" style="display: none; position: fixed; top: 60px; right: 20px; background-color: #4CAF50; color: white; padding: 10px; border-radius: 5px; z-index: 1000;">
-     Lote guardado correctamente.
- </div>
- <div id="messageBoxErrorLote" style="display: none; position: fixed; top: 60px; right: 20px; background-color: #eb0909; color: white; padding: 10px; border-radius: 5px; z-index: 1000;">
-     Error al Guardar el Lote.
- </div>
- <!-- Scripts para mostrar los modales -->
- <script type="text/javascript">
-     function showSuccessMessageLote() {
-         var messageBox = document.getElementById("messageBoxSuccessLote");
-         messageBox.style.display = "block";
-         setTimeout(function () {
-             messageBox.style.display = "none";
-         }, 3000); // Ocultar el mensaje después de 3 segundos
-     }
+    <!-- Modales -->
+    <div id="messageBoxSuccessLote" style="display: none; position: fixed; top: 60px; right: 20px; background-color: #4CAF50; color: white; padding: 10px; border-radius: 5px; z-index: 1000;">
+        Lote guardado correctamente.
+    </div>
+    <div id="messageBoxErrorLote" style="display: none; position: fixed; top: 60px; right: 20px; background-color: #eb0909; color: white; padding: 10px; border-radius: 5px; z-index: 1000;">
+        Error al Guardar el Lote.
+    </div>
+    <!-- Scripts para mostrar los modales -->
+    <script type="text/javascript">
+        function showSuccessMessageLote() {
+            var messageBox = document.getElementById("messageBoxSuccessLote");
+            messageBox.style.display = "block";
+            setTimeout(function () {
+                messageBox.style.display = "none";
+            }, 3000); // Ocultar el mensaje después de 3 segundos
+        }
 
-     function showErrorMessageLote() {
-         var messageBox = document.getElementById("messageBoxErrorLote");
-         messageBox.style.display = "block";
-         setTimeout(function () {
-             messageBox.style.display = "none";
-         }, 3000); // Ocultar el mensaje después de 3 segundos
-     }
- </script>
- <!--  -->
-        <!-- Modales -->
-<div id="messageBoxSuccessDetLote" style="display: none; position: fixed; top: 60px; right: 20px; background-color: #4CAF50; color: white; padding: 10px; border-radius: 5px; z-index: 1000;">
-    Detalles del Lote Ingresados correctamente.
-</div>
-<div id="messageBoxErrorDetLote" style="display: none; position: fixed; top: 60px; right: 20px; background-color: #eb0909; color: white; padding: 10px; border-radius: 5px; z-index: 1000;">
-    Error al guardar los Detalles del Lote.
-</div>
-<!-- Scripts para mostrar los modales -->
-<script type="text/javascript">
-    function showSuccessMessageDetLote() {
-        var messageBox = document.getElementById("messageBoxSuccessDetLote");
-        messageBox.style.display = "block";
-        setTimeout(function () {
-            messageBox.style.display = "none";
-        }, 3000); // Ocultar el mensaje después de 3 segundos
-    }
+        function showErrorMessageLote() {
+            var messageBox = document.getElementById("messageBoxErrorLote");
+            messageBox.style.display = "block";
+            setTimeout(function () {
+                messageBox.style.display = "none";
+            }, 3000); // Ocultar el mensaje después de 3 segundos
+        }
+    </script>
+    <!--  -->
+    <!-- Modales -->
+    <div id="messageBoxSuccessDetLote" style="display: none; position: fixed; top: 60px; right: 20px; background-color: #4CAF50; color: white; padding: 10px; border-radius: 5px; z-index: 1000;">
+        Detalles del Lote Ingresados correctamente.
+    </div>
+    <div id="messageBoxErrorDetLote" style="display: none; position: fixed; top: 60px; right: 20px; background-color: #eb0909; color: white; padding: 10px; border-radius: 5px; z-index: 1000;">
+        Error al guardar los Detalles del Lote.
+    </div>
+    <!-- Scripts para mostrar los modales -->
+    <script type="text/javascript">
+        function showSuccessMessageDetLote() {
+            var messageBox = document.getElementById("messageBoxSuccessDetLote");
+            messageBox.style.display = "block";
+            setTimeout(function () {
+                messageBox.style.display = "none";
+            }, 3000); // Ocultar el mensaje después de 3 segundos
+        }
 
-    function showErrorMessageDetLote() {
-        var messageBox = document.getElementById("messageBoxErrorDetLote");
-        messageBox.style.display = "block";
-        setTimeout(function () {
-            messageBox.style.display = "none";
-        }, 3000); // Ocultar el mensaje después de 3 segundos
-    }
-</script>
-<!--  -->
+        function showErrorMessageDetLote() {
+            var messageBox = document.getElementById("messageBoxErrorDetLote");
+            messageBox.style.display = "block";
+            setTimeout(function () {
+                messageBox.style.display = "none";
+            }, 3000); // Ocultar el mensaje después de 3 segundos
+        }
+    </script>
+    <!--  -->
 </asp:Content>
