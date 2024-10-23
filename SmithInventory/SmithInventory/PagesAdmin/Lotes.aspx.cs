@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SmithInventory.DB;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -210,8 +211,91 @@ namespace SmithInventory.PagesAdmin
 
         protected void btnGuardarLote_Click(object sender, EventArgs e)
         {
+            try
+            {
+                using (var db = new DCSmithDataContext(Global.CADENA))
+                {
+                    // Crear el objeto del nuevo lote
+                    var nuevoLote = new Lote_Ingreso
+                    {
+                        ID_CasaFarmaceutica = Convert.ToInt32(DropDownListCasaFarma.SelectedValue),
+                        Fecha_Ingreso = DateTime.Now, // Fecha actual
+                        Estado = true, // Cambiar según tu lógica
+                        Descuento = string.IsNullOrEmpty(txtDescuentoLote.Text) ? (int?)null : Convert.ToInt32(txtDescuentoLote.Text),
+                        Total_Lote = Convert.ToDecimal(txtTotalLote.Text),
+                        id_Usuario = 1 // ID del usuario actual
+                    };
 
+                    // Insertar el nuevo lote
+                    db.Lote_Ingreso.InsertOnSubmit(nuevoLote);
+                    db.SubmitChanges(); // Guardar para que se genere el id_Lote automáticamente
+
+                    // Ahora el nuevoLote.id_Lote contiene el ID generado por la base de datos
+                    int idLoteGenerado = nuevoLote.id_Lote;
+
+                    // Guardar los detalles del lote
+                    GuardarDetalleLote(idLoteGenerado, db);
+
+                    // Mensaje de éxito
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showSuccessMessageLote();", true);
+                    //lblMensaje.Text = "Lote guardado exitosamente.";
+                }
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showErrorMessageLote();", true);
+                //lblMensaje.Text = "Ocurrió un error al guardar el lote: " + ex.Message;
+            }
         }
+
+        private void GuardarDetalleLote(int idLote, DB.DCSmithDataContext db)
+        {
+            try
+            {
+                foreach (GridViewRow fila in gvProductosLote.Rows)
+                {
+                    // Obtener los valores de cada fila del GridView
+                    int idProducto = Convert.ToInt32(gvProductosLote.DataKeys[fila.RowIndex].Value);
+                    int cantidad = Convert.ToInt32((fila.FindControl("txtCantidad") as TextBox).Text);
+                    decimal precio = Convert.ToDecimal((fila.FindControl("txtPrecio") as TextBox).Text);
+                    decimal subtotal = cantidad * precio;
+
+                    DateTime fechaCaducidad = Convert.ToDateTime((fila.FindControl("txtFechaCaducidad") as TextBox).Text);
+                    int? descuento = string.IsNullOrEmpty((fila.FindControl("txtDescuento") as TextBox).Text)
+                                    ? (int?)null
+                                    : Convert.ToInt32((fila.FindControl("txtDescuento") as TextBox).Text);
+
+                    // Crear el objeto del detalle del lote
+                    var nuevoDetalleLote = new Detalle_Lote_Ingreso
+                    {
+                        id_Lote = idLote, // Usar el ID del lote generado
+                        ID_Producto = idProducto,
+                        Cantidad = cantidad,
+                        Precio = precio,
+                        SubTotal = subtotal,
+                        Fecha_Caducida = fechaCaducidad,
+                        Descuento = descuento
+                    };
+
+                    // Insertar el detalle en la base de datos
+                    db.Detalle_Lote_Ingreso.InsertOnSubmit(nuevoDetalleLote);
+                }
+
+                // Guardar los cambios en la base de datos
+                db.SubmitChanges();
+
+                // Mensaje de éxito
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showSuccessMessageDetLote();", true);
+                //lblMensaje.Text = "Detalles del lote guardados exitosamente.";
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showErrorMessageDetLote();", true);
+                //lblMensaje.Text = "Ocurrió un error al guardar los detalles del lote: " + ex.Message;
+            }
+        }
+
+
     }
 
     public class ProductsLote

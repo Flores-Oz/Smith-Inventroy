@@ -75,8 +75,9 @@
 
             <!-- GridView para productos agregados -->
             <div class="card-body">
-                <asp:GridView ID="gvProductosLote" runat="server" CssClass="table table-bordered table-striped" AutoGenerateColumns="False" OnRowCommand="gvProductosLote_RowCommand">
+                <asp:GridView ID="gvProductosLote" runat="server" CssClass="table table-bordered table-striped" AutoGenerateColumns="False" OnRowCommand="gvProductosLote_RowCommand" DataKeyNames="ProductoID">
                     <Columns>
+                        <asp:BoundField DataField="ProductoID" HeaderText="ID Producto" />
                         <asp:BoundField DataField="Producto" HeaderText="Producto" />
                         <asp:BoundField DataField="Cantidad" HeaderText="Cantidad" />
                         <asp:BoundField DataField="Precio" HeaderText="Precio" />
@@ -97,4 +98,56 @@
             </div>
         </div>
     </div>
+     <!-- Modales -->
+ <div id="messageBoxSuccessLote" style="display: none; position: fixed; top: 60px; right: 20px; background-color: #4CAF50; color: white; padding: 10px; border-radius: 5px; z-index: 1000;">
+     Lote guardado correctamente.
+ </div>
+ <div id="messageBoxErrorLote" style="display: none; position: fixed; top: 60px; right: 20px; background-color: #eb0909; color: white; padding: 10px; border-radius: 5px; z-index: 1000;">
+     Error al Guardar el Lote.
+ </div>
+ <!-- Scripts para mostrar los modales -->
+ <script type="text/javascript">
+     function showSuccessMessageLote() {
+         var messageBox = document.getElementById("messageBoxSuccessLote");
+         messageBox.style.display = "block";
+         setTimeout(function () {
+             messageBox.style.display = "none";
+         }, 3000); // Ocultar el mensaje después de 3 segundos
+     }
+
+     function showErrorMessageLote() {
+         var messageBox = document.getElementById("messageBoxErrorLote");
+         messageBox.style.display = "block";
+         setTimeout(function () {
+             messageBox.style.display = "none";
+         }, 3000); // Ocultar el mensaje después de 3 segundos
+     }
+ </script>
+ <!--  -->
+        <!-- Modales -->
+<div id="messageBoxSuccessDetLote" style="display: none; position: fixed; top: 60px; right: 20px; background-color: #4CAF50; color: white; padding: 10px; border-radius: 5px; z-index: 1000;">
+    Detalles del Lote Ingresados correctamente.
+</div>
+<div id="messageBoxErrorDetLote" style="display: none; position: fixed; top: 60px; right: 20px; background-color: #eb0909; color: white; padding: 10px; border-radius: 5px; z-index: 1000;">
+    Error al guardar los Detalles del Lote.
+</div>
+<!-- Scripts para mostrar los modales -->
+<script type="text/javascript">
+    function showSuccessMessageDetLote() {
+        var messageBox = document.getElementById("messageBoxSuccessDetLote");
+        messageBox.style.display = "block";
+        setTimeout(function () {
+            messageBox.style.display = "none";
+        }, 3000); // Ocultar el mensaje después de 3 segundos
+    }
+
+    function showErrorMessageDetLote() {
+        var messageBox = document.getElementById("messageBoxErrorDetLote");
+        messageBox.style.display = "block";
+        setTimeout(function () {
+            messageBox.style.display = "none";
+        }, 3000); // Ocultar el mensaje después de 3 segundos
+    }
+</script>
+<!--  -->
 </asp:Content>
