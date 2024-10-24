@@ -75,7 +75,7 @@
         <classShapeMoniker Id="c2bb9c11-c030-4daf-aa80-113e96864202" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(8.25 : 6.14024983723958); (8.66666666666667 : 6.14024983723958 : JumpStart); (8.83333333333333 : 6.14024983723958 : JumpEnd); (9 : 6.14024983723958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(8.25 : 6.14024983723958); (8.41666666666667 : 6.14024983723958 : JumpStart); (8.58333333333333 : 6.14024983723958 : JumpEnd); (8.66666666666667 : 6.14024983723958 : JumpStart); (8.83333333333333 : 6.14024983723958 : JumpEnd); (9 : 6.14024983723958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DCSmithDataContext/Lote_Ingreso/Lote_Ingreso_Detalle_Lote_Ingreso" />
       <nodes>
         <classShapeMoniker Id="a9374bea-df4e-493e-9e12-aaed39123bdc" />
@@ -124,7 +124,7 @@
         <classShapeMoniker Id="c2bb9c11-c030-4daf-aa80-113e96864202" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5 : 2.84699625651042); (5.13541666666667 : 2.84699625651042 : JumpStart); (5.30208333333333 : 2.84699625651042 : JumpEnd); (6.25 : 2.84699625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(5 : 2.84699625651042); (6.25 : 2.84699625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DCSmithDataContext/Estados/Estados_Venta" />
       <nodes>
         <classShapeMoniker Id="51e790c2-0fd2-43a0-a63f-4f2f28124b09" />
@@ -164,12 +164,18 @@
         <elementListCompartment Id="5be70865-2586-4af8-9923-f316db4dd7b7" absoluteBounds="5.015, 11.335, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(3.40625 : 6.78049967447917); (3.40625 : 12.1450512695312); (5 : 12.1450512695312)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(3.40625 : 6.78049967447917); (3.40625 : 12.1450512695312); (5 : 12.1450512695312)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DCSmithDataContext/Usuario/Usuario_Personal" />
       <nodes>
         <classShapeMoniker Id="f9dcd8db-06fa-41fb-ab68-3e842b53339d" />
         <classShapeMoniker Id="42d6d31a-b5c2-4f63-9ab7-d2f065243cad" />
       </nodes>
     </associationConnector>
+    <classShape Id="d19a637e-163e-4125-a0ec-e1de4f1bed03" absoluteBounds="2, 1, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/DCSmithDataContext/Reporte" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3eb9e326-5cb3-48e9-a50a-57b2ca9028ad" absoluteBounds="2.015, 1.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

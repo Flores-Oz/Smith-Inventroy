@@ -149,4 +149,10 @@
       <Association Name="Usuario_Personal" Member="Usuario" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Usuario" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.Reportes" Member="Reportes">
+    <Type Name="Reporte">
+      <Column Name="id_Reporte" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Reporte" Member="Reporte1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>

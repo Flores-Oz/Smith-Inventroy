@@ -175,3 +175,12 @@ C:\Users\Oscar\OneDrive\Documentos\Smith-Inventroy\SmithInventory\SmithInventory
 C:\Users\Oscar\OneDrive\Documentos\Smith-Inventroy\SmithInventory\SmithInventory\obj\Debug\SmithInventory.csproj.CopyComplete
 C:\Users\Oscar\OneDrive\Documentos\Smith-Inventroy\SmithInventory\SmithInventory\obj\Debug\SmithInventory.dll
 C:\Users\Oscar\OneDrive\Documentos\Smith-Inventroy\SmithInventory\SmithInventory\obj\Debug\SmithInventory.pdb
+C:\Users\Ozzca\OneDrive\Documentos\Smith-Inventroy\SmithInventory\SmithInventory\bin\runtimes\linux-arm64\native\libQuestPdfSkia.so
+C:\Users\Ozzca\OneDrive\Documentos\Smith-Inventroy\SmithInventory\SmithInventory\bin\runtimes\linux-musl-x64\native\libQuestPdfSkia.so
+C:\Users\Ozzca\OneDrive\Documentos\Smith-Inventroy\SmithInventory\SmithInventory\bin\runtimes\linux-x64\native\libQuestPdfSkia.so
+C:\Users\Ozzca\OneDrive\Documentos\Smith-Inventroy\SmithInventory\SmithInventory\bin\runtimes\osx-arm64\native\libQuestPdfSkia.dylib
+C:\Users\Ozzca\OneDrive\Documentos\Smith-Inventroy\SmithInventory\SmithInventory\bin\runtimes\osx-x64\native\libQuestPdfSkia.dylib
+C:\Users\Ozzca\OneDrive\Documentos\Smith-Inventroy\SmithInventory\SmithInventory\bin\runtimes\win-x64\native\QuestPdfSkia.dll
+C:\Users\Ozzca\OneDrive\Documentos\Smith-Inventroy\SmithInventory\SmithInventory\bin\runtimes\win-x86\native\QuestPdfSkia.dll
+C:\Users\Ozzca\OneDrive\Documentos\Smith-Inventroy\SmithInventory\SmithInventory\bin\QuestPDF.dll
+C:\Users\Ozzca\OneDrive\Documentos\Smith-Inventroy\SmithInventory\SmithInventory\bin\QuestPDF.xml

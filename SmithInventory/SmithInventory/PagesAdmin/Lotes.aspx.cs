@@ -82,6 +82,7 @@ namespace SmithInventory.PagesAdmin
             }
 
             // Añadir el producto actual
+            //Debo de meter un try catch
             DataRow dr = dtProductos.NewRow();
             dr["ProductoID"] = ddlProductoLote.SelectedValue; // ID del producto
             dr["Producto"] = ddlProductoLote.SelectedItem.Text;
@@ -100,7 +101,6 @@ namespace SmithInventory.PagesAdmin
             // Actualizar el total del lote
             totalLote += Convert.ToDecimal(txtSubtotalLote.Text);
             txtTotalLote.Text = totalLote.ToString("F2");
-            CalcularTotalLote();
             Limpiar();
         }
 

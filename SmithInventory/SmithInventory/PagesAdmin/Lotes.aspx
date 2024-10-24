@@ -87,25 +87,25 @@
                         <asp:BoundField DataField="Producto" HeaderText="Producto" />
                         <asp:TemplateField HeaderText="Cantidad">
                             <ItemTemplate>
-                                <asp:TextBox ID="txtCantidad" runat="server" Text='<%# Eval("Cantidad") %>' CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="txtCantidad" runat="server" Enabled="false" Text='<%# Eval("Cantidad") %>' CssClass="form-control"></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
 
                         <asp:TemplateField HeaderText="Precio">
                             <ItemTemplate>
-                                <asp:TextBox ID="txtPrecio" runat="server" Text='<%# Eval("Precio") %>' CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="txtPrecio" runat="server" Enabled="false" Text='<%# Eval("Precio") %>' CssClass="form-control"></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
 
                         <asp:TemplateField HeaderText="Descuento">
                             <ItemTemplate>
-                                <asp:TextBox ID="txtDescuento" runat="server" Text='<%# Eval("Descuento") %>' CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="txtDescuento" runat="server" Enabled="false" Text='<%# Eval("Descuento") %>' CssClass="form-control"></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
 
                         <asp:TemplateField HeaderText="Fecha de Caducidad">
                             <ItemTemplate>
-                                <asp:TextBox ID="txtFechaCaducidad" runat="server" Text='<%# Eval("FechaCaducidad", "{0:yyyy-MM-dd}") %>' CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="txtFechaCaducidad" runat="server" Enabled="false" Text='<%# Eval("FechaCaducidad", "{0:yyyy-MM-dd}") %>' CssClass="form-control"></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
 
