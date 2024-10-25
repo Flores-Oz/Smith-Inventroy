@@ -209,6 +209,54 @@ namespace SmithInventory.DB
 				return this.GetTable<Reporte>();
 			}
 		}
+		
+		public System.Data.Linq.Table<Vista_HistorialIngresoLote> Vista_HistorialIngresoLotes
+		{
+			get
+			{
+				return this.GetTable<Vista_HistorialIngresoLote>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Vista_HistorialVentaCliente> Vista_HistorialVentaClientes
+		{
+			get
+			{
+				return this.GetTable<Vista_HistorialVentaCliente>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Vista_LoteIng> Vista_LoteIngs
+		{
+			get
+			{
+				return this.GetTable<Vista_LoteIng>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Vista_Producto> Vista_Productos
+		{
+			get
+			{
+				return this.GetTable<Vista_Producto>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Vista_ProductosStockBajo> Vista_ProductosStockBajos
+		{
+			get
+			{
+				return this.GetTable<Vista_ProductosStockBajo>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Vista_VentaDetalle> Vista_VentaDetalles
+		{
+			get
+			{
+				return this.GetTable<Vista_VentaDetalle>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Casa_Farmaceutica")]
@@ -3412,6 +3460,942 @@ namespace SmithInventory.DB
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Vista_HistorialIngresoLotes")]
+	public partial class Vista_HistorialIngresoLote
+	{
+		
+		private int _id_Lote;
+		
+		private string _Casa_Farmaceutica;
+		
+		private System.DateTime _Fecha_Ingreso;
+		
+		private decimal _Total_Lote;
+		
+		private System.Nullable<int> _Descuento;
+		
+		private string _Usuario_Ingreso;
+		
+		private bool _Estado;
+		
+		public Vista_HistorialIngresoLote()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_Lote", DbType="Int NOT NULL")]
+		public int id_Lote
+		{
+			get
+			{
+				return this._id_Lote;
+			}
+			set
+			{
+				if ((this._id_Lote != value))
+				{
+					this._id_Lote = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Casa_Farmaceutica", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Casa_Farmaceutica
+		{
+			get
+			{
+				return this._Casa_Farmaceutica;
+			}
+			set
+			{
+				if ((this._Casa_Farmaceutica != value))
+				{
+					this._Casa_Farmaceutica = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Fecha_Ingreso", DbType="DateTime NOT NULL")]
+		public System.DateTime Fecha_Ingreso
+		{
+			get
+			{
+				return this._Fecha_Ingreso;
+			}
+			set
+			{
+				if ((this._Fecha_Ingreso != value))
+				{
+					this._Fecha_Ingreso = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Total_Lote", DbType="Money NOT NULL")]
+		public decimal Total_Lote
+		{
+			get
+			{
+				return this._Total_Lote;
+			}
+			set
+			{
+				if ((this._Total_Lote != value))
+				{
+					this._Total_Lote = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Descuento", DbType="Int")]
+		public System.Nullable<int> Descuento
+		{
+			get
+			{
+				return this._Descuento;
+			}
+			set
+			{
+				if ((this._Descuento != value))
+				{
+					this._Descuento = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Usuario_Ingreso", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Usuario_Ingreso
+		{
+			get
+			{
+				return this._Usuario_Ingreso;
+			}
+			set
+			{
+				if ((this._Usuario_Ingreso != value))
+				{
+					this._Usuario_Ingreso = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Estado", DbType="Bit NOT NULL")]
+		public bool Estado
+		{
+			get
+			{
+				return this._Estado;
+			}
+			set
+			{
+				if ((this._Estado != value))
+				{
+					this._Estado = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Vista_HistorialVentaCliente")]
+	public partial class Vista_HistorialVentaCliente
+	{
+		
+		private int _ID_Cliente;
+		
+		private string _Nombre_Completo;
+		
+		private string _Telefono;
+		
+		private System.Nullable<decimal> _Total_Compras;
+		
+		private System.Nullable<decimal> _Total_Descuentos;
+		
+		private System.Nullable<int> _Cantidad_Productos_Comprados;
+		
+		public Vista_HistorialVentaCliente()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Cliente", DbType="Int NOT NULL")]
+		public int ID_Cliente
+		{
+			get
+			{
+				return this._ID_Cliente;
+			}
+			set
+			{
+				if ((this._ID_Cliente != value))
+				{
+					this._ID_Cliente = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre_Completo", DbType="NVarChar(75) NOT NULL", CanBeNull=false)]
+		public string Nombre_Completo
+		{
+			get
+			{
+				return this._Nombre_Completo;
+			}
+			set
+			{
+				if ((this._Nombre_Completo != value))
+				{
+					this._Nombre_Completo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Telefono", DbType="NVarChar(8) NOT NULL", CanBeNull=false)]
+		public string Telefono
+		{
+			get
+			{
+				return this._Telefono;
+			}
+			set
+			{
+				if ((this._Telefono != value))
+				{
+					this._Telefono = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Total_Compras", DbType="Money")]
+		public System.Nullable<decimal> Total_Compras
+		{
+			get
+			{
+				return this._Total_Compras;
+			}
+			set
+			{
+				if ((this._Total_Compras != value))
+				{
+					this._Total_Compras = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Total_Descuentos", DbType="Money")]
+		public System.Nullable<decimal> Total_Descuentos
+		{
+			get
+			{
+				return this._Total_Descuentos;
+			}
+			set
+			{
+				if ((this._Total_Descuentos != value))
+				{
+					this._Total_Descuentos = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Cantidad_Productos_Comprados", DbType="Int")]
+		public System.Nullable<int> Cantidad_Productos_Comprados
+		{
+			get
+			{
+				return this._Cantidad_Productos_Comprados;
+			}
+			set
+			{
+				if ((this._Cantidad_Productos_Comprados != value))
+				{
+					this._Cantidad_Productos_Comprados = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Vista_LoteIng")]
+	public partial class Vista_LoteIng
+	{
+		
+		private int _id_Lote;
+		
+		private string _Casa_Farmaceutica;
+		
+		private System.DateTime _Fecha_Ingreso;
+		
+		private bool _Estado;
+		
+		private System.Nullable<int> _Descuento;
+		
+		private decimal _Total_Lote;
+		
+		private string _Usuario_Ingreso;
+		
+		private string _Descripcion;
+		
+		public Vista_LoteIng()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_Lote", DbType="Int NOT NULL")]
+		public int id_Lote
+		{
+			get
+			{
+				return this._id_Lote;
+			}
+			set
+			{
+				if ((this._id_Lote != value))
+				{
+					this._id_Lote = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Casa_Farmaceutica", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Casa_Farmaceutica
+		{
+			get
+			{
+				return this._Casa_Farmaceutica;
+			}
+			set
+			{
+				if ((this._Casa_Farmaceutica != value))
+				{
+					this._Casa_Farmaceutica = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Fecha_Ingreso", DbType="DateTime NOT NULL")]
+		public System.DateTime Fecha_Ingreso
+		{
+			get
+			{
+				return this._Fecha_Ingreso;
+			}
+			set
+			{
+				if ((this._Fecha_Ingreso != value))
+				{
+					this._Fecha_Ingreso = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Estado", DbType="Bit NOT NULL")]
+		public bool Estado
+		{
+			get
+			{
+				return this._Estado;
+			}
+			set
+			{
+				if ((this._Estado != value))
+				{
+					this._Estado = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Descuento", DbType="Int")]
+		public System.Nullable<int> Descuento
+		{
+			get
+			{
+				return this._Descuento;
+			}
+			set
+			{
+				if ((this._Descuento != value))
+				{
+					this._Descuento = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Total_Lote", DbType="Money NOT NULL")]
+		public decimal Total_Lote
+		{
+			get
+			{
+				return this._Total_Lote;
+			}
+			set
+			{
+				if ((this._Total_Lote != value))
+				{
+					this._Total_Lote = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Usuario_Ingreso", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Usuario_Ingreso
+		{
+			get
+			{
+				return this._Usuario_Ingreso;
+			}
+			set
+			{
+				if ((this._Usuario_Ingreso != value))
+				{
+					this._Usuario_Ingreso = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Descripcion", DbType="NVarChar(25)")]
+		public string Descripcion
+		{
+			get
+			{
+				return this._Descripcion;
+			}
+			set
+			{
+				if ((this._Descripcion != value))
+				{
+					this._Descripcion = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Vista_Productos")]
+	public partial class Vista_Producto
+	{
+		
+		private int _ID_Producto;
+		
+		private string _Nombre_Producto;
+		
+		private decimal _Precio_Costo;
+		
+		private decimal _Precio_Venta;
+		
+		private bool _Estado;
+		
+		private int _ID_Categoria;
+		
+		private string _Nombre_Categoria;
+		
+		private string _Descripcion_Categoria;
+		
+		public Vista_Producto()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Producto", DbType="Int NOT NULL")]
+		public int ID_Producto
+		{
+			get
+			{
+				return this._ID_Producto;
+			}
+			set
+			{
+				if ((this._ID_Producto != value))
+				{
+					this._ID_Producto = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre_Producto", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Nombre_Producto
+		{
+			get
+			{
+				return this._Nombre_Producto;
+			}
+			set
+			{
+				if ((this._Nombre_Producto != value))
+				{
+					this._Nombre_Producto = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Precio_Costo", DbType="Money NOT NULL")]
+		public decimal Precio_Costo
+		{
+			get
+			{
+				return this._Precio_Costo;
+			}
+			set
+			{
+				if ((this._Precio_Costo != value))
+				{
+					this._Precio_Costo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Precio_Venta", DbType="Money NOT NULL")]
+		public decimal Precio_Venta
+		{
+			get
+			{
+				return this._Precio_Venta;
+			}
+			set
+			{
+				if ((this._Precio_Venta != value))
+				{
+					this._Precio_Venta = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Estado", DbType="Bit NOT NULL")]
+		public bool Estado
+		{
+			get
+			{
+				return this._Estado;
+			}
+			set
+			{
+				if ((this._Estado != value))
+				{
+					this._Estado = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Categoria", DbType="Int NOT NULL")]
+		public int ID_Categoria
+		{
+			get
+			{
+				return this._ID_Categoria;
+			}
+			set
+			{
+				if ((this._ID_Categoria != value))
+				{
+					this._ID_Categoria = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre_Categoria", DbType="NVarChar(150) NOT NULL", CanBeNull=false)]
+		public string Nombre_Categoria
+		{
+			get
+			{
+				return this._Nombre_Categoria;
+			}
+			set
+			{
+				if ((this._Nombre_Categoria != value))
+				{
+					this._Nombre_Categoria = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Descripcion_Categoria", DbType="NVarChar(250)")]
+		public string Descripcion_Categoria
+		{
+			get
+			{
+				return this._Descripcion_Categoria;
+			}
+			set
+			{
+				if ((this._Descripcion_Categoria != value))
+				{
+					this._Descripcion_Categoria = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Vista_ProductosStockBajo")]
+	public partial class Vista_ProductosStockBajo
+	{
+		
+		private int _ID_Producto;
+		
+		private string _Nombre_Producto;
+		
+		private decimal _Precio_Venta;
+		
+		private bool _Estado;
+		
+		private string _Nombre_Categoria;
+		
+		private System.Nullable<int> _Cantidad;
+		
+		public Vista_ProductosStockBajo()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Producto", DbType="Int NOT NULL")]
+		public int ID_Producto
+		{
+			get
+			{
+				return this._ID_Producto;
+			}
+			set
+			{
+				if ((this._ID_Producto != value))
+				{
+					this._ID_Producto = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre_Producto", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Nombre_Producto
+		{
+			get
+			{
+				return this._Nombre_Producto;
+			}
+			set
+			{
+				if ((this._Nombre_Producto != value))
+				{
+					this._Nombre_Producto = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Precio_Venta", DbType="Money NOT NULL")]
+		public decimal Precio_Venta
+		{
+			get
+			{
+				return this._Precio_Venta;
+			}
+			set
+			{
+				if ((this._Precio_Venta != value))
+				{
+					this._Precio_Venta = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Estado", DbType="Bit NOT NULL")]
+		public bool Estado
+		{
+			get
+			{
+				return this._Estado;
+			}
+			set
+			{
+				if ((this._Estado != value))
+				{
+					this._Estado = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre_Categoria", DbType="NVarChar(150) NOT NULL", CanBeNull=false)]
+		public string Nombre_Categoria
+		{
+			get
+			{
+				return this._Nombre_Categoria;
+			}
+			set
+			{
+				if ((this._Nombre_Categoria != value))
+				{
+					this._Nombre_Categoria = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Cantidad", DbType="Int")]
+		public System.Nullable<int> Cantidad
+		{
+			get
+			{
+				return this._Cantidad;
+			}
+			set
+			{
+				if ((this._Cantidad != value))
+				{
+					this._Cantidad = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Vista_VentaDetalle")]
+	public partial class Vista_VentaDetalle
+	{
+		
+		private int _id_Venta;
+		
+		private System.DateTime _Fecha_Venta;
+		
+		private string _Cliente;
+		
+		private string _Nombre_Producto;
+		
+		private int _Cantidad;
+		
+		private decimal _Precio;
+		
+		private decimal _Subtotal;
+		
+		private System.Nullable<decimal> _Descuento;
+		
+		private System.Nullable<decimal> _SubTotal_Descuento;
+		
+		private decimal _Total_Venta;
+		
+		private System.Nullable<int> _Descuento_Venta;
+		
+		private System.Nullable<decimal> _Total_Descuento;
+		
+		private string _Vendedor;
+		
+		private string _Estado;
+		
+		public Vista_VentaDetalle()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_Venta", DbType="Int NOT NULL")]
+		public int id_Venta
+		{
+			get
+			{
+				return this._id_Venta;
+			}
+			set
+			{
+				if ((this._id_Venta != value))
+				{
+					this._id_Venta = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Fecha_Venta", DbType="DateTime NOT NULL")]
+		public System.DateTime Fecha_Venta
+		{
+			get
+			{
+				return this._Fecha_Venta;
+			}
+			set
+			{
+				if ((this._Fecha_Venta != value))
+				{
+					this._Fecha_Venta = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Cliente", DbType="NVarChar(75) NOT NULL", CanBeNull=false)]
+		public string Cliente
+		{
+			get
+			{
+				return this._Cliente;
+			}
+			set
+			{
+				if ((this._Cliente != value))
+				{
+					this._Cliente = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre_Producto", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Nombre_Producto
+		{
+			get
+			{
+				return this._Nombre_Producto;
+			}
+			set
+			{
+				if ((this._Nombre_Producto != value))
+				{
+					this._Nombre_Producto = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Cantidad", DbType="Int NOT NULL")]
+		public int Cantidad
+		{
+			get
+			{
+				return this._Cantidad;
+			}
+			set
+			{
+				if ((this._Cantidad != value))
+				{
+					this._Cantidad = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Precio", DbType="Money NOT NULL")]
+		public decimal Precio
+		{
+			get
+			{
+				return this._Precio;
+			}
+			set
+			{
+				if ((this._Precio != value))
+				{
+					this._Precio = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Subtotal", DbType="Money NOT NULL")]
+		public decimal Subtotal
+		{
+			get
+			{
+				return this._Subtotal;
+			}
+			set
+			{
+				if ((this._Subtotal != value))
+				{
+					this._Subtotal = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Descuento", DbType="Money")]
+		public System.Nullable<decimal> Descuento
+		{
+			get
+			{
+				return this._Descuento;
+			}
+			set
+			{
+				if ((this._Descuento != value))
+				{
+					this._Descuento = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SubTotal_Descuento", DbType="Money")]
+		public System.Nullable<decimal> SubTotal_Descuento
+		{
+			get
+			{
+				return this._SubTotal_Descuento;
+			}
+			set
+			{
+				if ((this._SubTotal_Descuento != value))
+				{
+					this._SubTotal_Descuento = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Total_Venta", DbType="Money NOT NULL")]
+		public decimal Total_Venta
+		{
+			get
+			{
+				return this._Total_Venta;
+			}
+			set
+			{
+				if ((this._Total_Venta != value))
+				{
+					this._Total_Venta = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Descuento_Venta", DbType="Int")]
+		public System.Nullable<int> Descuento_Venta
+		{
+			get
+			{
+				return this._Descuento_Venta;
+			}
+			set
+			{
+				if ((this._Descuento_Venta != value))
+				{
+					this._Descuento_Venta = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Total_Descuento", DbType="Money")]
+		public System.Nullable<decimal> Total_Descuento
+		{
+			get
+			{
+				return this._Total_Descuento;
+			}
+			set
+			{
+				if ((this._Total_Descuento != value))
+				{
+					this._Total_Descuento = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Vendedor", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Vendedor
+		{
+			get
+			{
+				return this._Vendedor;
+			}
+			set
+			{
+				if ((this._Vendedor != value))
+				{
+					this._Vendedor = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Estado", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Estado
+		{
+			get
+			{
+				return this._Estado;
+			}
+			set
+			{
+				if ((this._Estado != value))
+				{
+					this._Estado = value;
+				}
 			}
 		}
 	}

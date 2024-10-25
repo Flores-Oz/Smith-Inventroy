@@ -23,7 +23,7 @@
             <!-- DrowDownList de Reportes -->
             <div class="card-body">
                 <div class="form-group">
-                    <asp:DropDownList ID="ddlReportes" OnTextChanged="ddlReportes_TextChanged" runat="server" CssClass="form-control"></asp:DropDownList>
+                    <asp:DropDownList ID="ddlReportes" AutoPostBack="true" OnTextChanged="ddlReportes_SelectedIndexChanged" runat="server" CssClass="form-control"></asp:DropDownList>
                 </div>
             </div>
             <!-- Gridview para ver Reportes -->
@@ -35,7 +35,7 @@
             </div>
             <!-- Boton para mandar a llamar PDF -->
             <div class="card-footer text-right">
-                <asp:Button ID="btnEnviar" runat="server" CssClass="btn btn-primary" Text="Descargar  como PDF" />
+                <asp:Button ID="btnEnviar" runat="server" CssClass="btn btn-primary" Text="Descargar  como PDF" OnClick="btnEnviar_Click" />
             </div>
             <!-- -->
         </div>

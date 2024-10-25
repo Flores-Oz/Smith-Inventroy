@@ -73,6 +73,7 @@
   <ItemGroup>
     <Content Include="CSS\StyleIndex.css" />
     <Content Include="default.aspx" />
+    <Content Include="Global.asax" />
     <Content Include="PagesAdmin\Inicio.aspx" />
     <Content Include="PagesAdmin\Lotes.aspx" />
     <Content Include="PagesAdmin\OtrasSecciones.aspx" />
@@ -94,6 +95,9 @@
     </Compile>
     <Compile Include="default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Global.cs" />
     <Compile Include="MasterPages\SiteAdmin.Master.cs">
@@ -124,6 +128,9 @@
     <Compile Include="PagesAdmin\OtrasSecciones.aspx.designer.cs">
       <DependentUpon>OtrasSecciones.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PagesAdmin\PDFs\Clases\Producto.cs" />
+    <Compile Include="PagesAdmin\PDFs\GenerarPDFProducto.cs" />
+    <Compile Include="PagesAdmin\PDFs\MenuPDF.cs" />
     <Compile Include="PagesAdmin\Personal.aspx.cs">
       <DependentUpon>Personal.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
