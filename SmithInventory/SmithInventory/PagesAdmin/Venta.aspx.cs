@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Transactions;
 using System.Web.UI.WebControls;
 
 namespace SmithInventory.PagesAdmin
@@ -140,73 +141,102 @@ namespace SmithInventory.PagesAdmin
         {
             try
             {
-                using (var db = new DCSmithDataContext(Global.CADENA))
+                // Iniciar un TransactionScope para manejar la transacción
+                using (var scope = new TransactionScope())
                 {
-                    // Cambiar el tipo de la clase 'Venta' a 'DB.Venta'
-                    var nuevaVenta = new DB.Venta // Aquí debe ser DB.Venta
+                    using (var db = new DCSmithDataContext(Global.CADENA))
                     {
-                        Fecha_Venta = DateTime.Now,
-                        Total_Venta = Convert.ToDecimal(txtTotalVenta.Text),
-                        id_Usuario = 1, // Suponiendo que el usuario es 1, este valor debería ser dinámico si es necesario
-                        id_Estado = 1
-                    };
-
-                    db.Venta.InsertOnSubmit(nuevaVenta);
-                    db.SubmitChanges();
-
-                    // Obtener el ID de la venta generada para insertar los detalles
-                    int idVentaGenerada = nuevaVenta.id_Venta;
-                    GuardarDetalleVenta(idVentaGenerada, db);
-
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showSuccessMessageVenta();", true);
-                }
-            }
-            catch (Exception ex)
-            {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showErrorMessageVenta();", true);
-            }
-        }
-        private void GuardarDetalleVenta(int idVenta, DB.DCSmithDataContext db)
-        {
-            try
-            {
-                foreach (GridViewRow fila in gvProductosVenta.Rows)
-                {
-                    TextBox txtCantidad = fila.FindControl("txtCantidad") as TextBox;
-                    TextBox txtPrecio = fila.FindControl("txtPrecio") as TextBox;
-                    TextBox txtDescuento = fila.FindControl("txtDescuento") as TextBox;
-
-                    if (txtCantidad != null && txtPrecio != null)
-                    {
-                        int idProducto = Convert.ToInt32(gvProductosVenta.DataKeys[fila.RowIndex].Value);
-                        int cantidad = Convert.ToInt32(txtCantidad.Text);
-                        decimal precio = Convert.ToDecimal(txtPrecio.Text);
-                        decimal subtotal = cantidad * precio;
-                        int? descuento = string.IsNullOrEmpty(txtDescuento.Text) ? (int?)null : Convert.ToInt32(txtDescuento.Text);
-                        int ID_Cliente = Convert.ToInt32(DropDownListCliente.SelectedValue);
-
-                        var nuevoDetalleVenta = new Detalles_Venta
+                        // Crear una nueva instancia de la venta
+                        var nuevaVenta = new DB.Venta
                         {
-                            id_Venta = idVenta,
-                            ID_Producto = idProducto,
-                            Cantidad = cantidad,
-                            Precio = precio,
-                            Subtotal = subtotal,
-                            Descuento = descuento,
-                            ID_Cliente = ID_Cliente
-
+                            Fecha_Venta = DateTime.Now,
+                            Total_Venta = decimal.TryParse(txtTotalVenta.Text, out decimal totalVenta) ? totalVenta : 0,
+                            id_Usuario = 1, // Aquí debes reemplazarlo con la lógica para obtener el ID de usuario
+                            id_Estado = 1
                         };
 
-                        db.Detalles_Venta.InsertOnSubmit(nuevoDetalleVenta);
+                        db.Venta.InsertOnSubmit(nuevaVenta);
+                        db.SubmitChanges();
+
+                        // Obtener el ID de la venta generada para insertar los detalles
+                        int idVentaGenerada = nuevaVenta.id_Venta;
+
+                        foreach (GridViewRow fila in gvProductosVenta.Rows)
+                        {
+                            TextBox txtCantidad = fila.FindControl("txtCantidad") as TextBox;
+                            TextBox txtPrecio = fila.FindControl("txtPrecio") as TextBox;
+                            TextBox txtDescuento = fila.FindControl("txtDescuento") as TextBox;
+
+                            if (txtCantidad != null && txtPrecio != null)
+                            {
+                                int idProducto = Convert.ToInt32(gvProductosVenta.DataKeys[fila.RowIndex].Value);
+                                int cantidad = Convert.ToInt32(txtCantidad.Text);
+                                decimal precio = Convert.ToDecimal(txtPrecio.Text);
+                                decimal subtotal = cantidad * precio;
+                                int? descuento = string.IsNullOrEmpty(txtDescuento.Text) ? (int?)null : Convert.ToInt32(txtDescuento.Text);
+                                int ID_Cliente = Convert.ToInt32(DropDownListCliente.SelectedValue);
+
+                                var nuevoDetalleVenta = new Detalles_Venta
+                                {
+                                    id_Venta = idVentaGenerada,
+                                    ID_Producto = idProducto,
+                                    Cantidad = cantidad,
+                                    Precio = precio,
+                                    Subtotal = subtotal,
+                                    Descuento = descuento,
+                                    ID_Cliente = ID_Cliente
+                                };
+
+                                db.Detalles_Venta.InsertOnSubmit(nuevoDetalleVenta);
+
+                                // Reducir la cantidad de productos en los lotes según disponibilidad
+                                var lotesDisponibles = db.Detalle_Lote_Ingreso
+                                    .Where(dl => dl.ID_Producto == idProducto && dl.Cantidad > 0)
+                                    .OrderBy(dl => dl.Fecha_Caducida)
+                                    .ToList();
+
+                                int cantidadRestante = cantidad;
+                                foreach (var lote in lotesDisponibles)
+                                {
+                                    if (cantidadRestante <= 0)
+                                        break;
+
+                                    if (lote.Cantidad >= cantidadRestante)
+                                    {
+                                        lote.Cantidad -= cantidadRestante;
+                                        cantidadRestante = 0;
+                                    }
+                                    else
+                                    {
+                                        cantidadRestante -= lote.Cantidad;
+                                        lote.Cantidad = 0;
+                                    }
+                                }
+
+                                if (cantidadRestante > 0)
+                                {
+                                    throw new Exception($"Cantidad insuficiente en los lotes para el producto ID: {idProducto}. Cantidad solicitada: {cantidad}, Cantidad restante después de lotes disponibles: {cantidadRestante}");
+                                }
+                            }
+                        }
+
+                        // Si todo va bien, confirmar la transacción
+                        db.SubmitChanges();
+                        scope.Complete();
+
+                        // Limpiar el GridView
+                        gvProductosVenta.DataSource = null;
+                        gvProductosVenta.DataBind();
+                        txtTotalVenta.Text = "";
+
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showSuccessMessageVenta();", true);
                     }
                 }
-
-                db.SubmitChanges();
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showSuccessMessageDetVenta();", true);
             }
             catch (Exception ex)
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showErrorMessageDetVenta();", true);
+                // Si ocurre un error, no se llama a Complete(), lo que causa un rollback
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", $"alert('Error en la transacción de la venta: {ex.Message}');", true);
             }
         }
         private void ActualizarTotalVenta()
