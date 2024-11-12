@@ -75,6 +75,7 @@
     <Content Include="CSS\StyleIndex.css" />
     <Content Include="default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="PagesAdmin\Cliente.aspx" />
     <Content Include="PagesAdmin\Inicio.aspx" />
     <Content Include="PagesAdmin\Lotes.aspx" />
     <Content Include="PagesAdmin\OtrasSecciones.aspx" />
@@ -82,6 +83,12 @@
     <Content Include="PagesAdmin\Producto.aspx" />
     <Content Include="PagesAdmin\Reportes.aspx" />
     <Content Include="PagesAdmin\Venta.aspx" />
+    <Content Include="PagesEnfermera\InicioEnfermera.aspx" />
+    <Content Include="PagesEnfermera\ClienteEnf.aspx" />
+    <Content Include="PagesEnfermera\LotesEnf.aspx" />
+    <Content Include="PagesEnfermera\ProductoEnf.aspx" />
+    <Content Include="PagesEnfermera\ReportesEnf.aspx" />
+    <Content Include="PagesEnfermera\VentaEnf.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -107,6 +114,20 @@
     </Compile>
     <Compile Include="MasterPages\SiteAdmin.Master.designer.cs">
       <DependentUpon>SiteAdmin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\SiteEnfermera.Master.cs">
+      <DependentUpon>SiteEnfermera.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\SiteEnfermera.Master.designer.cs">
+      <DependentUpon>SiteEnfermera.Master</DependentUpon>
+    </Compile>
+    <Compile Include="PagesAdmin\Cliente.aspx.cs">
+      <DependentUpon>Cliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PagesAdmin\Cliente.aspx.designer.cs">
+      <DependentUpon>Cliente.aspx</DependentUpon>
     </Compile>
     <Compile Include="PagesAdmin\Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
@@ -160,6 +181,48 @@
     <Compile Include="PagesAdmin\Venta.aspx.designer.cs">
       <DependentUpon>Venta.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PagesEnfermera\InicioEnfermera.aspx.cs">
+      <DependentUpon>InicioEnfermera.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PagesEnfermera\InicioEnfermera.aspx.designer.cs">
+      <DependentUpon>InicioEnfermera.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PagesEnfermera\ClienteEnf.aspx.cs">
+      <DependentUpon>ClienteEnf.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PagesEnfermera\ClienteEnf.aspx.designer.cs">
+      <DependentUpon>ClienteEnf.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PagesEnfermera\LotesEnf.aspx.cs">
+      <DependentUpon>LotesEnf.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PagesEnfermera\LotesEnf.aspx.designer.cs">
+      <DependentUpon>LotesEnf.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PagesEnfermera\ProductoEnf.aspx.cs">
+      <DependentUpon>ProductoEnf.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PagesEnfermera\ProductoEnf.aspx.designer.cs">
+      <DependentUpon>ProductoEnf.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PagesEnfermera\ReportesEnf.aspx.cs">
+      <DependentUpon>ReportesEnf.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PagesEnfermera\ReportesEnf.aspx.designer.cs">
+      <DependentUpon>ReportesEnf.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PagesEnfermera\VentaEnf.aspx.cs">
+      <DependentUpon>VentaEnf.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PagesEnfermera\VentaEnf.aspx.designer.cs">
+      <DependentUpon>VentaEnf.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -172,6 +235,7 @@
     <None Include="DB\DCSmith.dbml.layout">
       <DependentUpon>DCSmith.dbml</DependentUpon>
     </None>
+    <Content Include="MasterPages\SiteEnfermera.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

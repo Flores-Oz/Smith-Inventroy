@@ -7,65 +7,74 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace SmithInventory.MasterPages
+namespace SmithInventory.PagesEnfermera
 {
 
 
-    public partial class SiteAdmin
+    public partial class WebForm2
     {
 
         /// <summary>
-        /// Control head.
+        /// Control txtDPICliente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+        protected global::System.Web.UI.WebControls.TextBox txtDPICliente;
 
         /// <summary>
-        /// Control form1.
+        /// Control txtNombreCliente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.TextBox txtNombreCliente;
 
         /// <summary>
-        /// Control Label2.
+        /// Control txtTelefonoCliente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.TextBox txtTelefonoCliente;
 
         /// <summary>
-        /// Control Label1.
+        /// Control ddlTipoCliente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTipoCliente;
 
         /// <summary>
-        /// Control ButtonLogOut.
+        /// Control txtDireccionCliente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonLogOut;
+        protected global::System.Web.UI.WebControls.TextBox txtDireccionCliente;
 
         /// <summary>
-        /// Control ContentPlaceHolder1.
+        /// Control btnGuardarCliente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+        protected global::System.Web.UI.WebControls.Button btnGuardarCliente;
+
+        /// <summary>
+        /// Control gvClientes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvClientes;
     }
 }

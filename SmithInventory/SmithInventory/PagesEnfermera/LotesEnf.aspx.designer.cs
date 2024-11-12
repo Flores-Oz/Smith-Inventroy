@@ -7,11 +7,11 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace SmithInventory.PagesAdmin
+namespace SmithInventory.PagesEnfermera
 {
 
 
-    public partial class Lotes
+    public partial class LotesEnf
     {
 
         /// <summary>

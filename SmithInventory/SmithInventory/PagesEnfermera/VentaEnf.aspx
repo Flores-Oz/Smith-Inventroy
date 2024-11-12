@@ -1,10 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/SiteAdmin.Master" AutoEventWireup="true" CodeBehind="Venta.aspx.cs" Inherits="SmithInventory.PagesAdmin.Venta" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/SiteEnfermera.Master" AutoEventWireup="true" CodeBehind="VentaEnf.aspx.cs" Inherits="SmithInventory.PagesEnfermera.VentaEnf" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
-
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div>
+      <div>
         <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
             <h1 class="display-4 fw-normal text-body-emphasis">Módulo de Venta</h1>
             <p class="fs-5 text-body-secondary">Bienvenido al Módulo de Venta. En este apartado puedes registrar una nueva venta y agregar productos a la misma.</p>

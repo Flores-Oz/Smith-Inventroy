@@ -51,6 +51,15 @@ namespace SmithInventory.PagesAdmin
         protected global::System.Web.UI.WebControls.TextBox txtTotalVenta;
 
         /// <summary>
+        /// Control ButtonCalcular.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonCalcular;
+
+        /// <summary>
         /// Control ddlProductoVenta.
         /// </summary>
         /// <remarks>

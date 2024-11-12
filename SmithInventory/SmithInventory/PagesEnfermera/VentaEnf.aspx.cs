@@ -3,14 +3,14 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Transactions;
 using System.Web;
 using System.Web.UI;
-using System.Transactions;
 using System.Web.UI.WebControls;
 
-namespace SmithInventory.PagesAdmin
+namespace SmithInventory.PagesEnfermera
 {
-    public partial class Venta : System.Web.UI.Page
+    public partial class VentaEnf : System.Web.UI.Page
     {
         private decimal totalVenta = 0;
         DB.DCSmithDataContext connec = new DB.DCSmithDataContext(Global.CADENA);

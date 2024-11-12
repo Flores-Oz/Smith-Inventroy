@@ -1,8 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/SiteAdmin.Master" AutoEventWireup="true" CodeBehind="Lotes.aspx.cs" Inherits="SmithInventory.PagesAdmin.Lotes" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/SiteEnfermera.Master" AutoEventWireup="true" CodeBehind="LotesEnf.aspx.cs" Inherits="SmithInventory.PagesEnfermera.LotesEnf" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
-
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div>
         <div class="pricing-header p-3 pb-md-4 mx-auto text-center">

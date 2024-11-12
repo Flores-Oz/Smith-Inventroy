@@ -7,48 +7,48 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace SmithInventory.PagesAdmin
+namespace SmithInventory.PagesEnfermera
 {
 
 
-    public partial class Lotes
+    public partial class VentaEnf
     {
 
         /// <summary>
-        /// Control txtIDLote.
+        /// Control txtIDVenta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtIDLote;
+        protected global::System.Web.UI.WebControls.TextBox txtIDVenta;
 
         /// <summary>
-        /// Control DropDownListCasaFarma.
+        /// Control DropDownListCliente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListCasaFarma;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListCliente;
 
         /// <summary>
-        /// Control txtFechaIngreso.
+        /// Control txtFechaVenta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFechaIngreso;
+        protected global::System.Web.UI.WebControls.TextBox txtFechaVenta;
 
         /// <summary>
-        /// Control txtTotalLote.
+        /// Control txtTotalVenta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTotalLote;
+        protected global::System.Web.UI.WebControls.TextBox txtTotalVenta;
 
         /// <summary>
         /// Control ButtonCalcular.
@@ -60,84 +60,75 @@ namespace SmithInventory.PagesAdmin
         protected global::System.Web.UI.WebControls.Button ButtonCalcular;
 
         /// <summary>
-        /// Control ddlProductoLote.
+        /// Control ddlProductoVenta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlProductoLote;
+        protected global::System.Web.UI.WebControls.DropDownList ddlProductoVenta;
 
         /// <summary>
-        /// Control txtCantidadLote.
+        /// Control txtCantidadVenta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCantidadLote;
+        protected global::System.Web.UI.WebControls.TextBox txtCantidadVenta;
 
         /// <summary>
-        /// Control txtPrecioLote.
+        /// Control txtPrecioVenta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPrecioLote;
+        protected global::System.Web.UI.WebControls.TextBox txtPrecioVenta;
 
         /// <summary>
-        /// Control txtDescuentoLote.
+        /// Control txtDescuentoVenta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDescuentoLote;
+        protected global::System.Web.UI.WebControls.TextBox txtDescuentoVenta;
 
         /// <summary>
-        /// Control txtSubtotalLote.
+        /// Control txtSubtotalVenta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSubtotalLote;
+        protected global::System.Web.UI.WebControls.TextBox txtSubtotalVenta;
 
         /// <summary>
-        /// Control txtFechaCaducidadLote.
+        /// Control btnAgregarProductoVenta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFechaCaducidadLote;
+        protected global::System.Web.UI.WebControls.Button btnAgregarProductoVenta;
 
         /// <summary>
-        /// Control btnAgregarProductoLote.
+        /// Control gvProductosVenta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAgregarProductoLote;
+        protected global::System.Web.UI.WebControls.GridView gvProductosVenta;
 
         /// <summary>
-        /// Control gvProductosLote.
+        /// Control btnGuardarVenta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvProductosLote;
-
-        /// <summary>
-        /// Control btnGuardarLote.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGuardarLote;
+        protected global::System.Web.UI.WebControls.Button btnGuardarVenta;
     }
 }

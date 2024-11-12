@@ -11,7 +11,7 @@ namespace SmithInventory.MasterPages
 {
 
 
-    public partial class SiteAdmin
+    public partial class SiteEnfermera
     {
 
         /// <summary>
