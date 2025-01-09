@@ -19,6 +19,7 @@ namespace SmithInventory.PagesAdmin
             if (!IsPostBack)
             {
                 CargarProductos();
+                //CargarProductos2();
                 CargarCasas();
             }
         }

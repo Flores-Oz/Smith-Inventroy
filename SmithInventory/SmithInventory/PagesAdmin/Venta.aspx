@@ -133,7 +133,16 @@
         Error al Guardar la Venta.
    
     </div>
-
+      <!--  SELECT 2 -->
+    <script>
+        $(document).ready(function () {
+            $('#<%= ddlProductoVenta.ClientID %>').select2({
+                placeholder: 'Seleccione una opción',
+                allowClear: true
+            });
+        });
+    </script>
+    <!-- -->
     <!-- Scripts para mostrar los modales -->
     <script type="text/javascript">
         function showSuccessMessageVenta() {
