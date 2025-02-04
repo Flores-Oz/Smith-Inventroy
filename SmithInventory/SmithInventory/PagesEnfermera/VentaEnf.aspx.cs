@@ -96,9 +96,10 @@ namespace SmithInventory.PagesEnfermera
             ViewState["ProductosVenta"] = dtProductos;
             gvProductosVenta.DataSource = dtProductos;
             gvProductosVenta.DataBind();
-
+           
             totalVenta += Convert.ToDecimal(txtSubtotalVenta.Text);
             txtTotalVenta.Text = totalVenta.ToString("F2");
+            CalcularTotalVenta();
             Limpiar();
         }
 
@@ -286,13 +287,15 @@ namespace SmithInventory.PagesEnfermera
                 {
                     dtProductos.Rows.Remove(rowToDelete);
                 }
-
+                //CalcularTotalVenta();
                 ViewState["ProductosVenta"] = dtProductos;
                 gvProductosVenta.DataSource = dtProductos;
                 gvProductosVenta.DataBind();
-
+              
                 ActualizarTotalVenta();
+               
             }
+            CalcularTotalVenta();
         }
         public class ProductsVenta
         {

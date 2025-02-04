@@ -20,7 +20,7 @@
                 <!-- Sección de datos del cliente -->
                 <div class="form-group">
                     <label for="txtIDCliente">DPI:</label>
-                    <asp:TextBox ID="txtDPICliente" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="txtDPICliente" placeholder="Ingresar DPI sin Espacios" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
 
                 <div class="form-group">
@@ -46,30 +46,6 @@
                 <div class="card-footer text-right">
                     <asp:Button ID="btnGuardarCliente" runat="server" CssClass="btn btn-primary" OnClick="btnGuardarCliente_Click" Text="Guardar Cliente" />
                 </div>
-            </div>
-        </div>
-    </div>
-
-     <!-- Contenedor principal -->
-    <div class="container py-4">
-        <!-- Tarjeta para el GridView de clientes -->
-        <div class="card">
-            <div class="card-header bg-primary text-white">
-                <h2>Lista de Clientes</h2>
-            </div>
-            <div class="card-body table-responsive">
-                <asp:GridView ID="gvClientes" runat="server" CssClass="table table-bordered table-striped table-responsive" AutoGenerateColumns="False" OnRowEditing="gvClientes_RowEditing" OnRowUpdating="gvClientes_RowUpdating" OnRowCancelingEdit="gvClientes_RowCancelingEdit" DataKeyNames="ID_Cliente">
-                    <Columns>
-                        <asp:BoundField DataField="ID_Cliente" HeaderText="ID Cliente" ReadOnly="true" />
-                        <asp:BoundField DataField="DPI" HeaderText="DPI" />
-                        <asp:BoundField DataField="Nombre_Completo" HeaderText="Nombre Completo" />
-                        <asp:BoundField DataField="Telefono" HeaderText="Teléfono" />
-                        <asp:BoundField DataField="Direccion" HeaderText="Dirección" />
-                        <asp:BoundField DataField="id_Tipo" HeaderText="Tipo Cliente" />
-
-                        <asp:CommandField ShowEditButton="True" />
-                    </Columns>
-                </asp:GridView>
             </div>
         </div>
     </div>

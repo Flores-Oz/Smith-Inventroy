@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 17.75, 19.375" name="DCSmith">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 21.5, 19.375" name="DCSmith">
   <DataContextMoniker Name="/DCSmithDataContext" />
   <nestedChildShapes>
     <classShape Id="0a6e77dc-3246-4785-a0be-829d9067cda3" absoluteBounds="3.5, 8, 2, 1.3862939453124987">
@@ -68,7 +68,7 @@
         <elementListCompartment Id="64b12c4c-5115-4ff9-9bc9-ab62bbdba447" absoluteBounds="6.265, 2.085, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(7.7499995 : 14.5); (7.7499995 : 7.03049967447917); (8.5 : 7.03049967447917); (8.5 : 2.77005126953125); (9 : 2.77005126953125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(7.7499995 : 14.5); (7.7499995 : 7.03049967447917); (8.5 : 7.03049967447917); (8.5 : 2.77005126953125); (9 : 2.77005126953125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DCSmithDataContext/Cliente/Cliente_Detalles_Venta" />
       <nodes>
         <classShapeMoniker Id="70375c3e-ebbe-4cfa-8417-47c021199055" />
@@ -89,21 +89,21 @@
         <classShapeMoniker Id="a9374bea-df4e-493e-9e12-aaed39123bdc" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(8.25 : 18.1065991210938); (10 : 18.1065991210938); (10 : 7.84780110677083)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(8.25 : 18.1065991210938); (10 : 18.1065991210938); (10 : 7.84780110677083)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DCSmithDataContext/Producto/Producto_Detalle_Lote_Ingreso" />
       <nodes>
         <classShapeMoniker Id="b0542320-b5b8-4fd7-ae04-4e60acc05257" />
         <classShapeMoniker Id="2776c526-509e-42c4-88f1-0b9bb8791571" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(8.25 : 17.126509152494); (8.625 : 16.751509152494); (8.625 : 3.43632890429688); (9 : 3.43632890429688)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(8.25 : 17.126509152494); (8.625 : 16.751509152494); (8.625 : 3.43632890429688); (9 : 3.43632890429688)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DCSmithDataContext/Producto/Producto_Detalles_Venta" />
       <nodes>
         <classShapeMoniker Id="b0542320-b5b8-4fd7-ae04-4e60acc05257" />
         <classShapeMoniker Id="c2bb9c11-c030-4daf-aa80-113e96864202" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 18.1931469726563); (6.25 : 18.1931469726563)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.5 : 18.1931469726563); (6.25 : 18.1931469726563)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DCSmithDataContext/Categoria/Categoria_Producto" />
       <nodes>
         <classShapeMoniker Id="af9d1d85-3601-4b4c-b3fa-7f65943a6855" />
@@ -124,7 +124,7 @@
         <classShapeMoniker Id="c2bb9c11-c030-4daf-aa80-113e96864202" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.125 : 2.47199625651042); (6.25 : 2.47199625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.125 : 2.47199625651042); (6.25 : 2.47199625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DCSmithDataContext/Estados/Estados_Venta" />
       <nodes>
         <classShapeMoniker Id="51e790c2-0fd2-43a0-a63f-4f2f28124b09" />
@@ -144,7 +144,7 @@
         <classShapeMoniker Id="a9374bea-df4e-493e-9e12-aaed39123bdc" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.28125 : 4.625); (5.28125 : 3.45599609375); (6.25 : 3.45599609375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.28125 : 4.625); (5.28125 : 3.45599609375); (6.25 : 3.45599609375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DCSmithDataContext/Usuario/Usuario_Venta" />
       <nodes>
         <classShapeMoniker Id="f9dcd8db-06fa-41fb-ab68-3e842b53339d" />
@@ -164,7 +164,7 @@
         <elementListCompartment Id="5be70865-2586-4af8-9923-f316db4dd7b7" absoluteBounds="5.015, 11.335, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(3.40625 : 6.78049967447917); (3.40625 : 12.1450512695312); (5 : 12.1450512695312)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(3.40625 : 6.78049967447917); (3.40625 : 12.1450512695312); (5 : 12.1450512695312)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DCSmithDataContext/Usuario/Usuario_Personal" />
       <nodes>
         <classShapeMoniker Id="f9dcd8db-06fa-41fb-ab68-3e842b53339d" />
@@ -211,6 +211,18 @@
       <DataClassMoniker Name="/DCSmithDataContext/Vista_VentaDetalle" />
       <nestedChildShapes>
         <elementListCompartment Id="6ad7926d-f8ec-4071-a938-984e00251314" absoluteBounds="15.39, 3.8350000000000009, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="60ffa982-6969-415d-9006-9f2a94cd6b04" absoluteBounds="19.25, 2.625, 2, 1.9631982421875">
+      <DataClassMoniker Name="/DCSmithDataContext/Vista_ClienteDetalles" />
+      <nestedChildShapes>
+        <elementListCompartment Id="502b2714-acb2-4a70-874d-5379f668a1fe" absoluteBounds="19.265, 3.085, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="183b7023-d28d-41c0-972e-dad56bba44b7" absoluteBounds="19.25, 4.875, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/DCSmithDataContext/Vista_DetalleProductos" />
+      <nestedChildShapes>
+        <elementListCompartment Id="765150ba-e0fc-4d83-9207-1d3bd63b866b" absoluteBounds="19.265, 5.335, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

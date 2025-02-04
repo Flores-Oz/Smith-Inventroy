@@ -15,17 +15,16 @@ namespace SmithInventory.PagesEnfermera
         {
             if (!IsPostBack)
             {
-                CargarProductos();
+               
                 CargarCategorias();
             }
         }
 
-        public void CargarProductos()
+        public void Limpiar()
         {
-            var Produc = from p in conn.Producto
-                         select p;
-            gvProducto.DataSource = Produc;
-            gvProducto.DataBind();
+            txtNombreProducto.Text = string.Empty;
+            txtPrecioCosto.Text = string.Empty;
+            txtPrecioVenta.Text = string.Empty;
         }
 
         public void CargarCategorias()
@@ -40,61 +39,6 @@ namespace SmithInventory.PagesEnfermera
             ddlCategoria.DataTextField = "categoria";
             ddlCategoria.DataValueField = "id_categoria";
             ddlCategoria.DataBind();
-        }
-
-        protected void gvProducto_RowEditing(object sender, GridViewEditEventArgs e)
-        {
-            gvProducto.EditIndex = e.NewEditIndex;
-            CargarProductos();
-        }
-
-        protected void gvProducto_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
-        {
-            gvProducto.EditIndex = -1;
-            CargarProductos();
-        }
-
-        protected void gvProducto_RowUpdating(object sender, GridViewUpdateEventArgs e)
-        {
-            GridViewRow fila = gvProducto.Rows[e.RowIndex];
-
-            // Obtener el ID del producto
-            int idProducto = Convert.ToInt32(gvProducto.DataKeys[e.RowIndex].Value);
-
-            // Obtener el nombre, precio y stock
-            TextBox txtNombreProducto = (TextBox)fila.FindControl("txtNombreProducto");
-            TextBox txtPrecio = (TextBox)fila.FindControl("txtPrecio");
-            TextBox txtStock = (TextBox)fila.FindControl("txtStock");
-            CheckBox chkEstadoEdit = (CheckBox)fila.FindControl("chkEstadoEdit");
-
-            string nuevoNombre = txtNombreProducto.Text;
-            decimal nuevoPrecio = Convert.ToDecimal(txtPrecio.Text);
-            decimal nuevoPrecioCosto = Convert.ToDecimal(txtStock.Text);
-            bool nuevoEstado = chkEstadoEdit.Checked;
-
-            // Aquí puedes actualizar el producto en la base de datos
-            using (var contexto = new DCSmithDataContext(Global.CADENA))
-            {
-                var producto = contexto.Producto.FirstOrDefault(p => p.ID_Producto == idProducto);
-                if (producto != null)
-                {
-                    producto.Nombre_Producto = nuevoNombre;
-                    producto.Precio_Venta = nuevoPrecio;
-                    producto.Precio_Costo = nuevoPrecioCosto;
-                    producto.Estado = nuevoEstado; // Asignar el nuevo estado
-                    contexto.SubmitChanges();
-                }
-            }
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showUpdateMessageProducto();", true);
-            gvProducto.EditIndex = -1;
-            CargarProductos();
-
-        }
-
-        protected void gvProducto_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-            gvProducto.PageIndex = e.NewPageIndex;
-            CargarProductos();
         }
 
         protected void ButtonGuardarProducto_Click(object sender, EventArgs e)
@@ -138,7 +82,7 @@ namespace SmithInventory.PagesEnfermera
 
                     // Mostrar mensaje de éxito y refrescar la lista
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showSuccessMessageProducto();", true);
-                    CargarProductos();
+                    Limpiar();
                 }
                 catch (Exception ex)
                 {

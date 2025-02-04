@@ -64,6 +64,21 @@ namespace SmithInventory.PagesAdmin
             gvReportes.DataBind();
         }
 
+        private void CargarVistaClienteDetalles()
+        {
+            var per = from pers in connec.Vista_ClienteDetalles
+                      select pers;
+            gvReportes.DataSource = per;
+            gvReportes.DataBind();
+        }
+        private void CargarVistaDetalleProductos()
+        {
+            var per = from pers in connec.Vista_DetalleProductos
+                      select pers;
+            gvReportes.DataSource = per;
+            gvReportes.DataBind();
+        }
+
         /* Cargar datos en DropDownList */
         public void CargarDropDown()
         {
@@ -126,6 +141,14 @@ namespace SmithInventory.PagesAdmin
                     case 6:
                         TextBoxBuscar.Text = "Buscar";
                         CargarVentaDetalle();
+                        break;
+                    case 7:
+                        TextBoxBuscar.Text = "Buscar";
+                        CargarVistaClienteDetalles();
+                        break;
+                    case 8:
+                        TextBoxBuscar.Text = "Buscar";
+                        CargarVistaDetalleProductos();
                         break;
                     default:
                         TextBoxBuscar.Text = "";

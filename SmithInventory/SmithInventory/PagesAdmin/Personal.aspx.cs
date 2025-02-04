@@ -19,6 +19,7 @@ namespace SmithInventory.PagesAdmin
             gvUsuarios.DataSource = users;
             gvUsuarios.DataBind();
         }
+    
         public void CargarPersonal()
         {
             var per = from p in conn.Personal
@@ -252,5 +253,6 @@ namespace SmithInventory.PagesAdmin
             CargarPersonal();
 
         }
+
     }
 }
