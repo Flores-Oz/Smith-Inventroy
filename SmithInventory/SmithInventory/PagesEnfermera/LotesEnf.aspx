@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/SiteEnfermera.Master" AutoEventWireup="true" CodeBehind="LotesEnf.aspx.cs" Inherits="SmithInventory.PagesEnfermera.LotesEnf" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div>
@@ -34,7 +36,7 @@
                   <br/>
                     <!-- Botón Total Venta -->
                     <div>
-                        <asp:Button ID="ButtonCalcular" runat="server" Visible="true" CssClass="btn btn-primary" OnClick="ButtonCalcular_Click" Text="Calcular Total Venta" />
+                        <asp:Button ID="ButtonCalcular" runat="server" Visible="false" CssClass="btn btn-primary" OnClick="ButtonCalcular_Click" Text="Calcular Total Venta" />
                     </div>
                 </div>
                 <br/>
@@ -123,6 +125,16 @@
             </div>
         </div>
     </div>
+   <!--  SELECT 2 -->
+   <script>
+       $(document).ready(function () {
+           $('#<%= ddlProductoLote.ClientID %>').select2({
+               placeholder: 'Seleccione una opción',
+               allowClear: true
+           });
+       });
+   </script>
+   <!-- -->
     <!-- Modales -->
     <div id="messageBoxSuccessLote" style="display: none; position: fixed; top: 60px; right: 20px; background-color: #4CAF50; color: white; padding: 10px; border-radius: 5px; z-index: 1000;">
         Lote guardado correctamente.
@@ -175,4 +187,5 @@
         }
     </script>
     <!--  -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </asp:Content>

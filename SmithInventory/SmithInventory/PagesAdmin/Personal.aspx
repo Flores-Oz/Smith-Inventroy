@@ -108,10 +108,8 @@
                                             <asp:Label ID="lblRol" runat="server" Text='<%# Bind("id_Rol") %>'></asp:Label>
                                         </ItemTemplate>
                                         <EditItemTemplate>
-                                            <asp:DropDownList ID="ddlRolEdit" runat="server" DataTextField="Roles" DataValueField="id_Rol"
-                                                SelectedValue='<%# Bind("id_Rol") %>'>
-                                            </asp:DropDownList>
-                                        </EditItemTemplate>
+                                            <asp:TextBox ID="txtRol" runat="server" Text='<%# Bind("id_Rol") %>'></asp:TextBox>
+                                       </EditItemTemplate>
                                     </asp:TemplateField>
 
                                     <asp:TemplateField HeaderText="Fecha Creacion">

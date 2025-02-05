@@ -21,11 +21,6 @@
             <div class="card-body">
                 <!-- Sección de datos de la venta -->
                 <div class="form-group">
-                    <label for="txtIDVenta">ID Venta:</label>
-                    <asp:TextBox ID="txtIDVenta" runat="server" CssClass="form-control" Enabled="false"></asp:TextBox>
-                </div>
-
-                <div class="form-group">
                     <label for="txtCliente">Cliente:</label>
                     <asp:DropDownList ID="DropDownListCliente" runat="server" CssClass="form-control"></asp:DropDownList>
                 </div>
@@ -43,7 +38,7 @@
                     <br/>
                     <!-- Botón Total Venta -->
                     <div>
-                        <asp:Button ID="ButtonCalcular" runat="server" CssClass="btn btn-primary" OnClick="ButtonCalcular_Click" Text="Calcular Total Venta" />
+                        <asp:Button ID="ButtonCalcular" Visible="false" runat="server" CssClass="btn btn-primary" OnClick="ButtonCalcular_Click" Text="Calcular Total Venta" />
                     </div>
                 </div>
                 <br />

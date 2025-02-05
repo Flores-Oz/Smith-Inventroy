@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/SiteEnfermera.Master" AutoEventWireup="true" CodeBehind="VentaEnf.aspx.cs" Inherits="SmithInventory.PagesEnfermera.VentaEnf" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
       <div>
@@ -151,4 +153,6 @@
             }, 3000); // Ocultar el mensaje después de 3 segundos
         }
     </script>
+    <!--  -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </asp:Content>

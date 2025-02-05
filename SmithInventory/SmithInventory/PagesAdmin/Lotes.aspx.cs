@@ -102,6 +102,7 @@ namespace SmithInventory.PagesAdmin
             // Actualizar el total del lote
             totalLote += Convert.ToDecimal(txtSubtotalLote.Text);
             txtTotalLote.Text = totalLote.ToString("F2");
+            CalcularTotalLotes();
             Limpiar();
         }
 
@@ -188,6 +189,7 @@ namespace SmithInventory.PagesAdmin
                 // Actualizar el total del lote
                 ActualizarTotalLote();
             }
+            CalcularTotalLotes();
         }
 
         private void BindGridView()
@@ -322,8 +324,8 @@ namespace SmithInventory.PagesAdmin
             {
                 // Obtener el índice de la columna "Subtotal" en el GridView
                 int subtotalIndex = gvProductosLote.Columns.Cast<DataControlField>()
-                                       .ToList()
-                                       .FindIndex(col => col.HeaderText == "Subtotal");
+                                           .ToList()
+                                           .FindIndex(col => col.HeaderText == "Subtotal");
 
                 if (subtotalIndex != -1)
                 {

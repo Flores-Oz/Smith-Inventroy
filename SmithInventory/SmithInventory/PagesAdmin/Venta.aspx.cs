@@ -99,6 +99,7 @@ namespace SmithInventory.PagesAdmin
 
             totalVenta += Convert.ToDecimal(txtSubtotalVenta.Text);
             txtTotalVenta.Text = totalVenta.ToString("F2");
+            CalcularTotalVenta();
             Limpiar();
         }
 
@@ -111,9 +112,6 @@ namespace SmithInventory.PagesAdmin
             decimal subtotal = (cantidad * precio) - descuento;
             txtSubtotalVenta.Text = subtotal.ToString("F2");
         }
-
-
-
         private void CalcularTotalVenta()
         {
             decimal totalVenta = 0;
@@ -293,6 +291,7 @@ namespace SmithInventory.PagesAdmin
 
                 ActualizarTotalVenta();
             }
+            CalcularTotalVenta();
         }
         public class ProductsVenta
         {

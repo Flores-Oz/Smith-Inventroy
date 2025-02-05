@@ -160,10 +160,12 @@ namespace SmithInventory.PagesAdmin
             TextBox txtPassword = (TextBox)fila.FindControl("txtPassword");
             CheckBox chkEstadoEdit = (CheckBox)fila.FindControl("chkEstadoEdit");
             TextBox txtFechaCreacion = (TextBox)fila.FindControl("txtFechaCreacion");
+            TextBox txtRol = (TextBox)fila.FindControl("txtRol");
 
             string nuevoUsuario = txtUsuario.Text;
             string nuevoPassword = txtPassword.Text;
             bool nuevoEstado = chkEstadoEdit.Checked;
+            Int16 nuevoRol = Convert.ToInt16(txtRol.Text);
             DateTime nuevaFechaCreacion = DateTime.Parse(txtFechaCreacion.Text);
 
             using (var contexto = new DCSmithDataContext(Global.CADENA))
@@ -175,6 +177,7 @@ namespace SmithInventory.PagesAdmin
                     usuario.Password = nuevoPassword;
                     usuario.Estado = nuevoEstado;
                     usuario.Fecha_Creacion = nuevaFechaCreacion;
+                    usuario.id_Rol = nuevoRol;
                     contexto.SubmitChanges();
                 }
             }
